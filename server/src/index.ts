@@ -1,54 +1,51 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
+import express, { type Request, type Response } from "express";
+import cors, { type CorsOptions } from "cors";
 import dotenv from "dotenv";
-import connectDB from "./core/db";
+import { connectDB } from "./core/db.js";
 
-
-
-// Load environment variables
+// Load env
 dotenv.config();
 
-connectDB()
-  .then(() => {
-    const app = express();
+await connectDB();
 
-    // ------------------------------------------------------------------------
-    // CORS Configuration
-    // ------------------------------------------------------------------------
-    const allowedOrigins = ["http://localhost:5173"];
+const app = express();
 
-    app.use(
-      cors({
-        origin: (origin, callback) => {
-          if (!origin) return callback(null, true); // Allow same-origin or curl
-          if (allowedOrigins.includes(origin)) return callback(null, true);
-          return callback(new Error("Not allowed by CORS"));
-        },
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-        credentials: true,
-      })
-    );
+// ------------------------------------------------------------------------
+// CORS Configuration (typed)
+// ------------------------------------------------------------------------
+const allowedOrigins = process.env.ORIGINGS
+  ? JSON.parse(process.env.ORIGINGS)
+  : [];
 
-    app.set("trust proxy", 1);
+const corsOptions: CorsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
-    // ------------------------------------------------------------------------
-    // Health Check
-    // ------------------------------------------------------------------------
-    app.get("/", (req: Request, res: Response) => {
-      res.send({ message: "🚀 Server is running successfully..." });
-    });
+app.use(cors(corsOptions));
 
-    // ------------------------------------------------------------------------
-    // Start Server
-    // ------------------------------------------------------------------------
-    const PORT = process.env.PORT || 3030;
+app.set("trust proxy", 1);
 
-    app.listen(PORT, () => {
-      console.log(`✅ Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err);
-    process.exit(1);
+// ------------------------------------------------------------------------
+// Health check
+// ------------------------------------------------------------------------
+app.get("/", (req: Request, res: Response) => {
+  return res.send({
+    message: "🚀 Server is running successfully...",
   });
+});
+
+// ------------------------------------------------------------------------
+// Start server
+// ------------------------------------------------------------------------
+const PORT = process.env.PORT || 3030;
+
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+});

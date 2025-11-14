@@ -1,13 +1,32 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "outDir": "dist",
+    // File structure
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // ESM for Node (required)
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    // Modern JavaScript target
+    "target": "ES2024",
+    "lib": ["ES2024"],
+
+    // Node typings
+    "types": ["node"],
+
+    // Good build output
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Strict TypeScript
     "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*"]
+    "skipLibCheck": true,
+
+    // Make NodeNext work properly with TS
+    "verbatimModuleSyntax": false,
+    "isolatedModules": false,
+    "moduleDetection": "force"
+  }
 }
