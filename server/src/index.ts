@@ -2,7 +2,6 @@ import express, { type Request, type Response } from "express";
 import cors, { type CorsOptions } from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./core/db.js";
-import userRoutes from "./routes/user_route.js";
 
 // Load environment variables
 dotenv.config();
@@ -17,17 +16,17 @@ async function main() {
 
     const app = express();
 
-    
-
     // ------------------------------------------------------------------------
     // CORS Configuration
     // ------------------------------------------------------------------------
     // Parse the allowed origins from a JSON string in environment variables
-const allowedOrigins = ["http://localhost:5173"];
+    const allowedOrigins: string[] = process.env.ORIGINS
+      ? JSON.parse(process.env.ORIGINS)
+      : [];
 
     const corsOptions: CorsOptions = {
       // Use a function to dynamically check if the origin is allowed
-      origin: (origin, callback) => {                   
+      origin: (origin, callback) => {
         // Allow requests with no origin (like mobile apps, curl, or same-origin)
         if (!origin) return callback(null, true);
 
@@ -54,13 +53,6 @@ const allowedOrigins = ["http://localhost:5173"];
     // ------------------------------------------------------------------------
     app.use(express.json()); // To parse JSON bodies
     app.use(express.urlencoded({ extended: true })); // To parse URL-encoded bodies
-
-    // -----------------------------------------------------------------------
-    // API Routes
-    // ------------------------------------------------------------------------
-
-  
-    app.use("/api/users", userRoutes);
 
     // ------------------------------------------------------------------------
     // Health check
