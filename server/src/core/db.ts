@@ -20,6 +20,6 @@ export const connectDB = async (): Promise<void> => {
       console.error("MongoDB connection error: An unknown error occurred");
     }
     // Exit the process on connection failure
-    // process.exit(1);
+    process.exit(1);
   }
 };
