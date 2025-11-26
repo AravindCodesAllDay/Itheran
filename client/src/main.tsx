@@ -5,10 +5,11 @@ import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from "./pages/auth/user_form"
-import Navbar from "./components/navbar/navbar" // 👈 Import the Navbar
+import Navbar from "./components/navbar/navbar" 
+import Footer from "./components/footer"
 import AboutUs from "./pages/aboutus/aboutus"
 import Services from "./pages/services/services"
-import UseCases from "./pages/usecases/usecases"
+import Contact from "./pages/usecases/contact"
 
 // NOTE: You'll need to create placeholder components for all new routes (e.g., AboutUs, Services, etc.)
 
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       {/* 👈 Render the Navbar outside the Routes to display it on all pages */}
       <Navbar />
+      
       <Routes>
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -24,11 +26,12 @@ createRoot(document.getElementById('root')!).render(
        
          <Route path="/aboutus" element={<AboutUs />} />
          <Route path="/services" element={<Services />} /> 
-        <Route path="/usecases" element={<UseCases />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<div>Pricing Page</div>} />
         <Route path="/blog" element={<div>Blog Page</div>} />
-
+      
       </Routes>
+      <Footer />
     </BrowserRouter>
   </StrictMode>,
 )

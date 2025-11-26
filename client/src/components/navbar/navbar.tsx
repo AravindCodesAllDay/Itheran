@@ -24,7 +24,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="p-4 sticky top-0 z-10">
+        <nav className="p-4 sticky top-0 z-10 bg-white">
             <div className="max-w-7xl mx-auto flex items-center">
 
                 {/* Logo */}

@@ -3,6 +3,8 @@ import cors, { type CorsOptions } from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./core/db.js";
 
+import userRouter from "./routes/user_route.js"; 
+
 // Load environment variables
 dotenv.config();
 
@@ -53,6 +55,12 @@ async function main() {
     // ------------------------------------------------------------------------
     app.use(express.json()); // To parse JSON bodies
     app.use(express.urlencoded({ extended: true })); // To parse URL-encoded bodies
+
+    // ------------------------------------------------------------------------
+    // Route Configuration
+    // ------------------------------------------------------------------------
+    // Use the user router for authentication routes
+    app.use("/api/users", userRouter);
 
     // ------------------------------------------------------------------------
     // Health check
