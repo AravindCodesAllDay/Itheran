@@ -5,8 +5,7 @@ export default function Navbar() {
         { name: "About us", path: "/aboutus" },
         { name: "Services", path: "/services" },
         { name: "Contact", path: "/contact" },
-        { name: "Pricing", path: "/pricing" },
-        { name: "Blog", path: "/blog" },
+       
     ];
 
     const DARK_PRIMARY = "#191A23";
@@ -33,7 +32,7 @@ export default function Navbar() {
                     className="text-2xl font-bold transition duration-150"
                     style={{ color: DARK_PRIMARY }}
                 >
-                    <span className="mr-2">★</span> ITHERAN
+                    <span className="mr-2">★</span> AITHERAN
                 </Link>
 
                 <div className="ml-auto flex items-center space-x-8">
@@ -44,7 +43,7 @@ export default function Navbar() {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className="font-medium text-base hover:text-accent-green transition duration-150"
+                                className="font-medium text-base hover:text-accent-green transition hover:underline duration-150"
                                 style={{ color: DARK_PRIMARY }}
                             >
                                 {item.name}

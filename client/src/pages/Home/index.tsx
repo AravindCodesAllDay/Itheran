@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Lottie from "react-lottie";
 import animationData from "../../assets/animeOne.json";
 import { useState } from "react"; // Import useState
-import Team from "../../pages/Home/team";
+// import Team from "../../pages/Home/team";
 
 
 export default function Home() {
@@ -450,7 +450,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Team />
+      {/* <Team /> */}
 
       {/* CONTACT SECTION — SAME THEME */}
       <section className="py-24 px-6 lg:px-32 bg-white text-[#191A23]">

@@ -6,13 +6,12 @@ const LIGHT_GRAY = "#F3F3F3"; // Text Color
 const GREEN_ACCENT = "#B9FF66"; // Accent Color
 
 // Placeholder data for links
-const navLinks = [
-    { name: "About us", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Contact", href: "/contact" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Blog", href: "/blog" },
-];
+// const navLinks = [
+//     { name: "About us", href: "/about" },
+//     { name: "Services", href: "/services" },
+//     { name: "Contact", href: "/contact" },
+   
+// ];
 
 // Simple SVG Icons for Social Media (Lucide or similar style)
 const SocialIcon = ({ children, href }: { children: React.ReactNode, href: string }) => (
@@ -44,11 +43,11 @@ export default function Footer() {
                         <svg className="w-8 h-8 mr-2" style={{ fill: GREEN_ACCENT }} viewBox="0 0 24 24">
                             <path d="M12 2L2 22h20L12 2zm0 14l-4 8h8l-4-8z" />
                         </svg>
-                        ITHERAN
+                        AITHERAN
                     </div>
 
                     {/* Navigation Links */}
-                    <nav className="flex flex-wrap gap-x-6 gap-y-3 font-medium text-sm lg:text-base">
+                    {/* <nav className="flex flex-wrap gap-x-6 gap-y-3 font-medium text-sm lg:text-base">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -59,7 +58,7 @@ export default function Footer() {
                                 {link.name}
                             </a>
                         ))}
-                    </nav>
+                    </nav> */}
 
                     {/* Social Icons */}
                     <div className="flex space-x-4">
