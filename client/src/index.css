@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  --color-accent: oklch(0.9168 0.2017 126.91);
-  --color-text: oklch(0.2198 0.0097 280.95);
-  --color-background-to: oklch(0.9822 0.0051 88.22);
+@theme {
+  --color-GREEN: oklch(0.9168 0.2017 126.91);
+  --color-DARK-PRIMARY: oklch(0.2198 0.0097 280.95);
+  --color-LIGHT-GRAY: oklch(0.9822 0.0051 88.22);
 }
