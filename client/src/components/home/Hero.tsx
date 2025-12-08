@@ -4,6 +4,8 @@ import moon from "/parallax/moon.png";
 import mountain from "/parallax/mountain.png";
 import plants from "/parallax/plants.png";
 import birds from "/parallax/birds.png";
+import cloud1 from "/parallax/cloud1.png";
+import cloud2 from "/parallax/cloud2.png";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -43,7 +45,29 @@ export default function Hero() {
         style={{
           transform: `
       translateY(${scrollY * 0.3}px)
-      translateX(${scrollY * -0.15}px)
+      translateX(${scrollY * -0.2}px)
+    `,
+        }}
+      />
+      <img
+        src={cloud2}
+        alt="cloud"
+        className="absolute z-10 w-[400px] right-0 top-1/3 pointer-events-none"
+        style={{
+          transform: `
+      translateY(${scrollY * 0.3}px)
+      translateX(${scrollY * -0.1}px)
+    `,
+        }}
+      />
+      <img
+        src={cloud1}
+        alt="clouds"
+        className="absolute z-10 w-[400px] left-0 top-1/3 pointer-events-none"
+        style={{
+          transform: `
+      translateY(${scrollY * 0.3}px)
+      translateX(${scrollY * -0.1}px)
     `,
         }}
       />

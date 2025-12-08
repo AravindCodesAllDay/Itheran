@@ -12,7 +12,7 @@ export default function Contact() {
 
         {/* Description */}
         <p className="text-base md:text-lg max-w-3xl text-DARK-PRIMARY/80">
-          Connect with Us: Let's Discuss Your Digital Marketing Needs
+          Let's Discuss Your Digital Marketing Needs
         </p>
       </div>
       <div
@@ -33,7 +33,7 @@ export default function Contact() {
             <input
               type="text"
               required
-              placeholder="John Doe"
+              placeholder="Name"
               className="w-full px-4 py-3 rounded-xl border-2 outline-none 
                    border-DARK-PRIMARY bg-LIGHT-GRAY"
             />
@@ -81,12 +81,15 @@ export default function Contact() {
         {/* RIGHT = TEXT */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">
-            Let’s Connect & Grow Together
+            Let's Connect & Grow Together
           </h2>
 
           <p className="text-lg text-[#191A23]/80 leading-relaxed">
-            Have questions? Looking for collaboration? Send us a message — we
-            respond quickly and would love to assist you!
+            <span>Have questions? Looking for collaboration?</span>
+            <span>
+              Send us a message — we respond quickly and would love to assist
+              you!
+            </span>
           </p>
         </div>
       </div>

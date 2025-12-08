@@ -53,7 +53,7 @@ export default function Hero() {
       </div>
 
       {/* LOTTIE ANIMATION */}
-      <Lottie options={defaultOptions} height={400} width={400} />
+      <Lottie options={defaultOptions} height={500} width={500} />
     </section>
   );
 }

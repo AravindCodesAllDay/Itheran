@@ -1,4 +1,5 @@
 import { useState } from "react";
+import scenary from "/scenary.jpg";
 
 export default function RoadMap() {
   const [openStep, setOpenStep] = useState<number | null>(0);
@@ -32,46 +33,73 @@ export default function RoadMap() {
     },
   ];
 
-  // Function to handle step click
   const toggleStep = (index: number) => {
     setOpenStep(openStep === index ? null : index);
   };
 
   return (
-    <section id="roadmap" className="px-6 lg:px-32 py-20 ">
-      <div className="w-full">
-        {/* Section Header */}
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-semibold rounded-xl px-4 py-2 bg-[#B9FF66] w-fit text-DARK-PRIMARY">
-            Our Working Process
-          </h2>
-          <p className="mt-2 text-base md:text-lg text-[#191A23]/80">
-            Step-by-Step Guide to Achieving Your Business Goals
-          </p>
-        </div>
+    <section id="roadmap" className="px-6 lg:px-32 py-20">
+      {/* HEADER */}
+      <div className="mb-10">
+        <h2 className="text-3xl md:text-4xl font-semibold rounded-xl px-4 py-2 bg-[#B9FF66] w-fit text-DARK-PRIMARY">
+          Our Working Process
+        </h2>
+        <p className="mt-3 text-base md:text-lg text-[#191A23]/80">
+          Step-by-Step Guide to Achieving Your Goals
+        </p>
+      </div>
 
-        {/* Accordion Steps */}
-        <div className="space-y-6">
-          {workSteps.map((item, index) => {
-            const isOpen = openStep === index;
+      <div className="space-y-6">
+        {workSteps.map((item, index) => {
+          const isOpen = openStep === index;
 
-            return (
-              <div
-                key={index}
-                onClick={() => toggleStep(index)}
-                className={`
-                  rounded-3xl p-6 cursor-pointer border-2 transition duration-300
-                  shadow-[4px_4px_0px_0px_#191A23] text-DARK-PRIMARY
-                  
+          const positionPercentage = (index / (workSteps.length - 1)) * 100;
+
+          const backgroundStyle = {
+            backgroundImage: `url(${scenary})`,
+            backgroundPosition: `center ${positionPercentage}%`,
+            backgroundSize: "cover",
+          };
+
+          return (
+            <div
+              key={index}
+              onClick={() => toggleStep(index)}
+              className={`
+                  relative overflow-hidden rounded-3xl p-6 cursor-pointer 
+                  border-2 transition-all duration-500 ease-in-out
+                  shadow-[4px_4px_0px_0px_#191A23]
                   ${
                     isOpen
-                      ? "bg-GREEN border-GREEN"
-                      : "bg-LIGHT-GRAY border-LIGHT-GRAY"
+                      ? "border-GREEN"
+                      : "border-LIGHT-GRAY hover:-translate-y-1 hover:transition-transform hover:duration-300 hover:ease-out"
                   }
                 `}
+            >
+              <div
+                className={`
+                    absolute inset-0 transition-opacity duration-700
+                    ${isOpen ? "opacity-100" : "opacity-0"}
+                  `}
+                style={backgroundStyle}
+              />
+
+              {/* ✅ DARK OVERLAY (Readability) */}
+              <div
+                className={`
+                    absolute inset-0 transition-opacity duration-500
+                    ${isOpen ? "bg-black/40 opacity-100" : "opacity-0"}
+                  `}
+              />
+
+              {/* ✅ CONTENT */}
+              <div
+                className={`
+                    relative z-10 transition-colors duration-300
+                    ${isOpen ? "text-white" : "text-DARK-PRIMARY"}
+                  `}
               >
                 <div className="flex items-start justify-between">
-                  {/* Step Number and Title */}
                   <div className="flex flex-col sm:flex-row items-baseline gap-4">
                     <span className="text-4xl font-light tracking-tight">
                       {item.step}
@@ -81,20 +109,18 @@ export default function RoadMap() {
                     </h3>
                   </div>
 
-                  {/* Toggle Button (simplified icon) */}
+                  {/* TOGGLE BUTTON */}
                   <button
                     className={`
-                      w-8 h-8 rounded-full flex items-center justify-center 
-                      border-2 border-DARK-PRIMARY transition
-
-                      ${
-                        isOpen
-                          ? "bg-LIGHT-GRAY text-DARK-PRIMARY"
-                          : "bg-DARK-PRIMARY text-LIGHT-GRAY"
-                      }
-                    `}
+                        w-8 h-8 rounded-full flex items-center justify-center 
+                        border-2 transition-all duration-300
+                        ${
+                          isOpen
+                            ? "bg-GREEN text-DARK-PRIMARY border-LIGHT-GRAY"
+                            : "bg-DARK-PRIMARY text-GREEN border-DARK-PRIMARY"
+                        }
+                      `}
                   >
-                    {/* Shows '-' for the active step, '+' for others */}
                     {isOpen ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -129,16 +155,25 @@ export default function RoadMap() {
                   </button>
                 </div>
 
-                {/* Description (Conditionally rendered) */}
-                {isOpen && (
-                  <p className="mt-4 pl-14 max-w-2xl text-base text-[#191A23] animate-in slide-in-from-top duration-300">
-                    {item.desc}
-                  </p>
-                )}
+                {/* DROPDOWN TEXT */}
+                <div
+                  className={`
+                      grid transition-all duration-500 ease-in-out
+                      ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100 mt-4"
+                          : "grid-rows-[0fr] opacity-0"
+                      }
+                    `}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pl-14 max-w-2xl text-base">{item.desc}</p>
+                  </div>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
