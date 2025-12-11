@@ -1,5 +1,5 @@
-import animationData from "../../assets/about.json";
 import Lottie from "react-lottie";
+import animationData from "../../assets/about.json";
 
 export default function AboutUs() {
   const defaultOptions = {

@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
+import Lottie from "react-lottie";
+
 import mesh from "/parallax/mesh.png";
 import mesh2 from "/parallax/mesh2.png";
 import laptop from "/parallax/laptop.png";
-import books from "/parallax/books.png";
 import icons from "/parallax/icons.svg";
-import robot from "/parallax/robot.svg";
+import robot from "../../assets/robot.json";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: robot,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -20,7 +29,7 @@ export default function Hero() {
       id="hero"
       className="relative flex justify-center h-screen w-full overflow-hidden bg-[#B7D593]"
     >
-      {/* 🚀 Foreground Content (Slowest Movement - Appears Closest) */}
+      {/* oreground Content (Slowest Movement - Appears Closest) */}
       <div
         className="absolute space-y-6 text-PRIMARY -translate-y-1/2 z-30 top-1/2"
         style={{ transform: `translateY(${scrollY * 0.2}px)` }} // Adjusted to 0.2 (Slower)
@@ -51,32 +60,26 @@ export default function Hero() {
         </ul>
       </div>
 
-      {/* 💻 Mid-ground Elements */}
+      {/* Mid-ground Elements */}
       <img
         src={laptop}
         alt="laptop"
-        className="absolute top-2/5 left-10 z-10"
+        className="absolute top-2/5 left-1/12 z-10"
         style={{ transform: `translateY(${scrollY * 0.45}px)` }}
       />
-      <img
-        src={robot}
-        alt="robot"
-        className="absolute bottom-0 right-0 z-10"
+      <div
+        className="absolute -bottom-48 -right-80 z-10"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
-      />
+      >
+        <Lottie options={defaultOptions} height={880} width={1000} />
+      </div>
 
       {/* 📚 Farther Mid-ground Elements */}
       <img
         src={icons}
         alt="icons"
-        className="absolute top-1/4 right-1/12 z-5"
+        className="absolute top-1/3 left-12 z-5"
         style={{ transform: `translateY(${scrollY * 0.6}px)` }}
-      />
-      <img
-        src={books}
-        alt="books"
-        className="absolute top-2/5 left-1/12 z-5" // Added size for clarity
-        style={{ transform: `translateY(${scrollY * 0.55}px)` }}
       />
 
       {/* ⛰️ Background Meshes (Fastest Movement - Appears Farthest) */}
