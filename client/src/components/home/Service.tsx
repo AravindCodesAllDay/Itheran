@@ -168,12 +168,10 @@ export default function Service() {
           We offer a range of services to help students grow and succeed.
         </p>
       </div>
-      <div className="bottom-0 h-full flex flex-col items-center justify-center px-6 lg:px-32">
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl relative perspective-1000">
-          {services.map((s, i) => (
-            <ServiceCard key={i} {...s} />
-          ))}
-        </div>
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 w-full relative perspective-1000">
+        {services.map((s, i) => (
+          <ServiceCard key={i} {...s} />
+        ))}
       </div>
     </section>
   );

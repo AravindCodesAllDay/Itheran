@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="p-4 fixed top-0 w-full z-50 backdrop-blur-md transition-colors duration-150"
+      className="p-4 fixed top-0 w-full z-50 backdrop-blur-xs transition-colors duration-150"
       style={{
         backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
       }}

@@ -4,7 +4,7 @@ export default function Contact() {
       id="contact"
       className="py-24 px-6 lg:px-32 bg-LIGHTER-GRAY text-PRIMARY"
     >
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 mb-10">
+      <div className="flex flex-col items-start gap-3 mb-10">
         {/* SECONDARY Highlight Title */}
         <h2 className="text-3xl md:text-4xl font-semibold rounded-xl px-4 py-2 bg-SECONDARY w-fit text-PRIMARY">
           Contact
