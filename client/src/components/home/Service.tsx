@@ -1,13 +1,14 @@
 import { useRef, useEffect, useState } from "react";
 import type { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 import resume from "/services/resume.gif";
 import skills from "/services/skills.gif";
 import interview from "/services/interview.gif";
-import arrow from "/services/arrow.gif";
 
 // --- Types ---
 interface ServiceItem {
+  id: string;
   title: string;
   description: string;
   bg: string;
@@ -79,45 +80,55 @@ interface ServiceCardProps extends ServiceItem {
 }
 
 const ServiceCard: FC<ServiceCardProps> = ({
+  id,
   title,
   description,
-  bg,
-  text,
-  titleBg,
   illustration,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div
-      className={`group relative rounded-3xl p-8 md:p-10 border-2 border-PRIMARY flex flex-col justify-between shadow-[4px_4px_0px_0px_#191A23] hover:-translate-y-1 hover:transition-transform hover:duration-300 hover:ease-out ${bg} ${text} will-change-transform`}
+      onClick={() => navigate(`/features/${id}`)}
+      className="group glass relative rounded-3xl p-8 flex flex-col gap-6 hover:border-secondary/50 hover:shadow-premium transition-all duration-500 overflow-hidden cursor-pointer"
     >
-      <div className="flex justify-between items-start gap-6">
-        <div className="flex flex-col gap-6">
-          <span
-            className={`px-3 py-1 text-xl font-medium rounded-md w-fit ${titleBg} text-PRIMARY`}
-          >
-            {title}
-          </span>
-
-          <div className="bg-white rounded-full flex items-center gap-3 px-4 py-2 w-fit cursor-pointer overflow-hidden">
-            <GifController
-              src={arrow}
-              alt="learn more"
-              className="size-8 transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:scale-110"
-            />
-            <span className="text-lg text-PRIMARY font-medium LIGHTER-GRAYspace-nowrap">
-              Learn more
-            </span>
-          </div>
+      <div className="flex justify-between items-center">
+        <div className="size-16 rounded-2xl bg-secondary/10 flex items-center justify-center p-3">
+          <GifController
+            src={illustration}
+            alt={title}
+            className="w-full h-full"
+          />
         </div>
-
-        <GifController
-          src={illustration}
-          alt={title}
-          className="size-24 md:size-28 rounded-full"
-        />
+        <div className="bg-white/5 size-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="size-5 text-secondary"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14m-7-7 7 7-7 7" />
+          </svg>
+        </div>
       </div>
 
-      <p className="mt-8 text-sm md:text-base opacity-80">{description}</p>
+      <div className="space-y-3">
+        <h4 className="text-xl font-bold text-light group-hover:text-secondary transition-colors">
+          {title}
+        </h4>
+        <p className="text-muted text-sm leading-relaxed">{description}</p>
+      </div>
+
+      <div className="mt-4 pt-6 border-t border-white/5 flex items-center justify-between">
+        <span className="text-xs font-bold uppercase tracking-widest text-muted group-hover:text-light transition-colors">
+          Learn More
+        </span>
+        <div className="size-1 w-0 group-hover:w-12 bg-secondary transition-all duration-500 rounded-full" />
+      </div>
     </div>
   );
 };
@@ -128,28 +139,33 @@ export default function Service() {
 
   const services: ServiceItem[] = [
     {
+      id: "ai-interview",
       title: "AI Interview",
       description:
-        "Improve your online visibility with targeted SEO strategies.",
-      bg: "bg-LIGHT-GRAY",
-      text: "text-PRIMARY",
-      titleBg: "bg-SECONDARY",
+        "Emotion-aware AI that analyzes facial cues and voice data to provide real-time feedback.",
+      bg: "bg-light-gray",
+      text: "text-primary",
+      titleBg: "bg-secondary",
       illustration: interview,
     },
     {
+      id: "resume-gen",
       title: "Resume Generator",
-      description: "Boost your results quickly with optimized PPC campaigns.",
-      bg: "bg-SECONDARY",
-      text: "text-PRIMARY",
-      titleBg: "bg-LIGHT-GRAY",
+      description:
+        "AI-powered resume crafting that optimizes for ATS and highlights your impact.",
+      bg: "bg-secondary",
+      text: "text-primary",
+      titleBg: "bg-light-gray",
       illustration: resume,
     },
     {
+      id: "skill-training",
       title: "Skill Training",
-      description: "Grow your audience with creative social media strategies.",
-      bg: "bg-PRIMARY",
-      text: "text-LIGHT-GRAY",
-      titleBg: "bg-LIGHT-GRAY",
+      description:
+        "Personalized roadmaps and curated resources to help you bridge the tech gap.",
+      bg: "bg-primary",
+      text: "text-light-gray",
+      titleBg: "bg-light-gray",
       illustration: skills,
     },
   ];
@@ -158,21 +174,29 @@ export default function Service() {
     <section
       ref={containerRef}
       id="services"
-      className="bg-LIGHTER-GRAY px-6 lg:px-32 py-20"
+      className="section-container bg-primary overflow-hidden"
     >
-      <div className="flex flex-col items-start gap-3 mb-10 w-full max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-semibold rounded-xl px-5 py-2 bg-SECONDARY text-PRIMARY">
-          Services
+      <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-20 w-full max-w-6xl mx-auto">
+        <h2 className="inline-block px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/5 text-secondary text-xs font-bold uppercase tracking-[0.2em]">
+          Our Expertise
         </h2>
-        <p className="text-base md:text-lg max-w-3xl text-PRIMARY/80">
-          We offer a range of services to help students grow and succeed.
+        <h3 className="text-4xl md:text-5xl font-bold text-light">
+          Immersive Learning <span className="text-secondary">Solutions</span>
+        </h3>
+        <p className="text-muted max-w-2xl text-lg leading-relaxed">
+          We combine cutting-edge AI with pedagogical excellence to provide a
+          suite of tools designed for the modern professional.
         </p>
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 w-full relative perspective-1000">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-10">
         {services.map((s, i) => (
           <ServiceCard key={i} {...s} />
         ))}
       </div>
+
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 }

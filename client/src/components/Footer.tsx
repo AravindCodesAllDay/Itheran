@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const SocialIcon = ({
   children,
@@ -11,91 +11,179 @@ const SocialIcon = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="size-6 flex items-center justify-center transition duration-300 hover:scale-110 stroke-LIGHT-GRAY hover:stroke-SECONDARY"
+    className="size-6 flex items-center justify-center transition duration-300 hover:scale-110 stroke-primary hover:stroke-secondary"
   >
     {children}
   </a>
 );
 
 export default function Footer() {
+  const [isDark, setIsDark] = useState(true);
+
+  // Theme synchronization
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+    } else {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    if (newTheme) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   return (
-    <footer className="w-full mt-auto py-8 px-6 sm:px-10 lg:px-20 rounded-t-3xl border-t-8 bg-PRIMARY text-LIGHT-GRAY ">
-      <div className="max-w-7xl mx-auto flex flex-col space-y-10">
+    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-4xl border-white/10 bg-primary text-muted">
+      <div className="max-w-7xl mx-auto flex flex-col space-y-12">
         {/* TOP SECTION: Logo, Nav, Socials */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0 pb-6  mb-3 border-gray-700/50">
-          {/* Logo/Brand Name (Placeholder) */}
-          <div className="flex items-center text-3xl font-extrabold tracking-tight">
-            {/* Simple Logo Placeholder (using an abstract shape) */}
-            <svg className="w-8 h-8 mr-2 fill-SECONDARY" viewBox="0 0 24 24">
-              <path d="M12 2L2 22h20L12 2zm0 14l-4 8h8l-4-8z" />
-            </svg>
-            AITHERAN
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
+          {/* Logo/Brand Name */}
+          <div className="flex items-center text-3xl font-bold tracking-tight text-light">
+            <span className="text-secondary mr-2">★</span> AI
+            <span className="text-secondary">THERAN</span>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex space-x-4">
-            <SocialIcon href="https://linkedin.com">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                strokeWidth="2"
-              >
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect width="4" height="12" x="2" y="9" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </SocialIcon>
-            <SocialIcon href="https://twitter.com">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                strokeWidth="2"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2 1.7-1.4 3.4-4 4.4-6.8 1.4-3.6 2.3-7.7 2.3-10.7z" />
-              </svg>
-            </SocialIcon>
-            <SocialIcon href="https://facebook.com">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                strokeWidth="2"
-              >
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-              </svg>
-            </SocialIcon>
+          {/* Social Icons & Theme Toggle */}
+          <div className="flex items-center space-x-8">
+            <div className="flex space-x-6">
+              <SocialIcon href="https://linkedin.com">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </SocialIcon>
+              <SocialIcon href="https://twitter.com">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </SocialIcon>
+              <SocialIcon href="https://facebook.com">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </SocialIcon>
+            </div>
+
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-2xl bg-surface border border-white/10 hover:border-secondary/50 transition-all duration-300"
+              aria-label="Toggle Theme"
+              style={{ color: "var(--light)" }}
+            >
+              {isDark ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
         {/* MIDDLE SECTION: Contact Info and Newsletter */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Contact Info */}
-          <div className="space-y-3 text-sm">
-            <p>Email: info@positivus.com</p>
-            <p>Phone: 555-567-8901</p>
-            <p>Address: 1234 Main St, Moonstone City, Stardust State 12345</p>
+          <div className="space-y-4 text-sm">
+            <h4 className="text-light font-semibold uppercase tracking-wider mb-4">
+              Contact us
+            </h4>
+            <p>Email: hello@aitheran.ai</p>
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Address: Innovation District, Tech City</p>
           </div>
 
           {/* Newsletter Subscription */}
-          <div className="flex flex-col justify-end">
-            <div className="p-3 rounded-xl flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 bg-PRIMARY">
+          <div className="flex flex-col">
+            <h4 className="text-light font-semibold uppercase tracking-wider mb-4">
+              Stay Updated
+            </h4>
+            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-surface rounded-2xl border border-white/5">
               <input
                 type="email"
-                placeholder="Email"
-                className="w-full p-4 rounded-xl text-sm border-2 focus:outline-none bg-PRIMARY border-SECONDARY text-LIGHT-GRAY "
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-xl bg-transparent focus:outline-none text-light"
               />
-              <button className=" w-full sm:w-auto px-6 py-4 rounded-xl font-semibold text-sm transition hover:opacity-90 bg-SECONDARY text-PRIMARY">
+              <button className="px-6 py-3 rounded-xl bg-secondary text-primary font-bold hover:bg-accent transition-colors">
                 Subscribe
               </button>
             </div>
           </div>
         </div>
-        <hr className="text-gray-700/50" />
-        {/* BOTTOM SECTION: Copyright */}
-        <div className="flex justify-center text-sm ">
-          <p>© {new Date().getFullYear()} Positivus. All Rights Reserved.</p>
+
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest uppercase">
+          <p>
+            © {new Date().getFullYear()} AITHERAN. Empowering growth with AI.
+          </p>
+          <div className="flex gap-8">
+            <a href="#" className="hover:text-secondary transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-secondary transition-colors">
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
     </footer>

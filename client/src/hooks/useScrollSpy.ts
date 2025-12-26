@@ -28,9 +28,10 @@ export function useScrollSpy(sectionIds: string[]) {
     return () => observer.disconnect();
   }, [sectionIds]);
 
-  // ✅ Update URL without page jump
+  // ✅ Update URL without page jump (only on home page)
   useEffect(() => {
-    if (activeId) {
+    const isHomePage = window.location.pathname === "/";
+    if (activeId && isHomePage) {
       history.replaceState(null, "", `/#${activeId}`);
     }
   }, [activeId]);

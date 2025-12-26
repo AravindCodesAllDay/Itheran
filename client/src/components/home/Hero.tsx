@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 
-import mesh from "/parallax/mesh.png";
-import mesh2 from "/parallax/mesh2.png";
-import laptop from "/parallax/laptop.png";
-import icons from "/parallax/icons.svg";
 import robot from "../../assets/robot.json";
 
 export default function Hero() {
@@ -27,76 +23,70 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex justify-center h-screen w-full overflow-hidden bg-[#B7D593]"
+      className="relative flex justify-center items-center min-h-[110vh] w-full overflow-hidden bg-linear-to-t from-primary to-secondary/40"
     >
-      {/* oreground Content (Slowest Movement - Appears Closest) */}
+      {/* Background Gradient & Mesh */}
+      <div className="absolute inset-0 bg-radial-[at_50%_50%] from-secondary/10 to-transparent z-0 opacity-50" />
+
+      {/* Foreground Content */}
       <div
-        className="absolute space-y-6 text-PRIMARY -translate-y-1/2 z-30 top-1/2"
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }} // Adjusted to 0.2 (Slower)
+        className="relative z-30 text-center space-y-8 max-w-4xl px-6"
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       >
-        <h1 className="text-6xl leading-tight">
-          Avatar-Based{" "}
-          <span className="font-bold text-SECONDARY">Skill Training</span>
+        <div className="inline-block px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/5 text-secondary text-xs font-bold uppercase tracking-[0.2em] mb-4 animate-pulse">
+          Next Gen Skill Development
+        </div>
+
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] tracking-tight text-light">
+          Avatar-Based <br />
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary via-accent to-secondary bg-size-[200%_auto] animate-gradient">
+            Skill Training
+          </span>
         </h1>
 
-        <p className="text-xl font-medium flex flex-col">
-          <span>
-            Simulate real-world interviews, Practice Interpersonal & Technical
-            skills,
-          </span>
-          <span>and grow with AI-driven feedback.</span>
+        <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
+          Simulate real-world interviews, practice interpersonal & technical
+          skills, and grow with AI-driven feedback in an immersive 3D
+          environment.
         </p>
 
-        <ul className="flex font-bold flex-col sm:flex-row gap-4">
-          <li className="bg-SECONDARY text-PRIMARY px-2 p-1 rounded-full">
-            Signup without Credit Card
-          </li>
-          <li className="bg-PRIMARY text-LIGHT-GRAY px-2 p-1 rounded-full">
-            Interact with our 3D Avatar
-          </li>
-          <li className="text-PRIMARY bg-LIGHT-GRAY px-2 p-1 rounded-full">
-            Boost your Confidence & Skills
-          </li>
-        </ul>
+        <div className="flex flex-wrap justify-center gap-4 pt-4">
+          <div className="glass px-6 py-3 rounded-2xl flex items-center gap-3 group hover:border-secondary/50 transition-all duration-300">
+            <div className="size-2 rounded-full bg-secondary group-hover:animate-ping" />
+            <span className="text-sm font-semibold tracking-wide text-light">
+              3D Avatar Interaction
+            </span>
+          </div>
+          <div className="glass px-6 py-3 rounded-2xl flex items-center gap-3 group hover:border-secondary/50 transition-all duration-300">
+            <div className="size-2 rounded-full bg-accent group-hover:animate-ping" />
+            <span className="text-sm font-semibold tracking-wide text-light">
+              No Credit Card Needed
+            </span>
+          </div>
+          <div className="glass px-6 py-3 rounded-2xl flex items-center gap-3 group hover:border-secondary/50 transition-all duration-300">
+            <div className="size-2 rounded-full bg-light group-hover:animate-ping" />
+            <span className="text-sm font-semibold tracking-wide text-light">
+              AI-Driven Feedback
+            </span>
+          </div>
+        </div>
+
+        <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <button className="px-8 py-4 bg-secondary text-primary font-bold rounded-2xl hover:bg-accent hover:scale-105 transition-all duration-300 shadow-glow">
+            Get Started Now
+          </button>
+          <button className="px-8 py-4 border border-white/10 glass font-bold rounded-2xl hover:bg-white/5 transition-all duration-300 text-light">
+            Watch Demo
+          </button>
+        </div>
       </div>
 
-      {/* Mid-ground Elements */}
-      <img
-        src={laptop}
-        alt="laptop"
-        className="absolute top-2/5 left-1/12 z-10"
-        style={{ transform: `translateY(${scrollY * 0.45}px)` }}
-      />
       <div
-        className="absolute -bottom-48 -right-80 z-10"
-        style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+        className="absolute -bottom-[5%] -right-[12%] z-10 opacity-40 md:opacity-100 pointer-events-none"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       >
-        <Lottie options={defaultOptions} height={880} width={1000} />
+        <Lottie options={defaultOptions} height={700} width={800} />
       </div>
-
-      {/* 📚 Farther Mid-ground Elements */}
-      <img
-        src={icons}
-        alt="icons"
-        className="absolute top-1/3 left-1/12 z-5"
-        style={{ transform: `translateY(${scrollY * 0.6}px)` }}
-      />
-
-      {/* ⛰️ Background Meshes (Fastest Movement - Appears Farthest) */}
-      <img
-        src={mesh}
-        alt="mesh"
-        className="absolute bottom-0 h-3/5 w-full z-0"
-        // Fastest background movement
-        style={{ transform: `translateY(${scrollY * 0.8}px)` }}
-      />
-      <img
-        src={mesh2}
-        alt="mesh2"
-        className="absolute top-0 h-1/5 w-full z-0"
-        // Also fast movement
-        style={{ transform: `translateY(${scrollY * 0.7}px)` }}
-      />
     </section>
   );
 }
