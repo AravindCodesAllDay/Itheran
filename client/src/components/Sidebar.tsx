@@ -1,3 +1,10 @@
+import Lottie from "react-lottie";
+
+import resume from "../assets/resume.json";
+import skills from "../assets/skills.json";
+import interview from "../assets/interview.json";
+import aboutus from "../assets/aboutus.json";
+
 interface SidebarProps {
   activeId: string;
   onSelect: (id: string) => void;
@@ -5,10 +12,10 @@ interface SidebarProps {
 
 export default function Sidebar({ activeId, onSelect }: SidebarProps) {
   const items = [
-    { id: "about", icon: "🏢", label: "About Itheran" },
-    { id: "ai-interview", icon: "🤖", label: "AI Interview" },
-    { id: "skill-training", icon: "🧠", label: "Skill Training" },
-    { id: "resume-gen", icon: "📄", label: "Resume Generation" },
+    { id: "about", icon: aboutus, label: "About Itheran" },
+    { id: "ai-interview", icon: interview, label: "AI Interview" },
+    { id: "skill-training", icon: skills, label: "Skill Training" },
+    { id: "resume-gen", icon: resume, label: "Resume Generation" },
   ];
 
   return (
@@ -24,7 +31,14 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
                 : "hover:bg-surface text-muted hover:text-light"
             }`}
           >
-            <span className="text-xl">{item.icon}</span>
+            <div>
+              <Lottie
+                options={{ animationData: item.icon, autoplay: false }}
+                isPaused={true}
+                height="30px"
+                width="30px"
+              />
+            </div>
             <span className="font-semibold tracking-wide">{item.label}</span>
           </button>
         ))}

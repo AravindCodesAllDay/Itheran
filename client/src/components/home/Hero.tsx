@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 
-import robot from "../../assets/robot.json";
+import robot from "../../assets/robot2.json";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -82,10 +82,10 @@ export default function Hero() {
       </div>
 
       <div
-        className="absolute -bottom-[5%] -right-[12%] z-10 opacity-40 md:opacity-100 pointer-events-none"
+        className="absolute bottom-0 left-0 z-10 opacity-40 md:opacity-100 pointer-events-none"
         style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       >
-        <Lottie options={defaultOptions} height={700} width={800} />
+        <Lottie options={defaultOptions} height={600} width={600} />
       </div>
     </section>
   );

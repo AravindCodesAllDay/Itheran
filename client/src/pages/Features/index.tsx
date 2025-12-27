@@ -24,7 +24,6 @@ export default function Features() {
 
         <div className="flex-1 pb-24">
           <div className="reveal">
-            <div className="text-6xl mb-6">{current.image}</div>
             <h1 className="text-4xl lg:text-6xl font-bold text-(--light) mb-4">
               {current.title}
             </h1>
