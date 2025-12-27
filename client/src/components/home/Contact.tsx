@@ -1,4 +1,90 @@
+import { useState } from "react";
+
+const ContactItem = ({
+  icon,
+  title,
+  value,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+}) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="flex items-center gap-6 group text-left w-full"
+      title="Click to copy"
+    >
+      <div className="size-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
+        {icon}
+      </div>
+
+      <div>
+        <p className="text-xs font-bold uppercase tracking-widest text-muted">
+          {title}
+        </p>
+        <p className="text-lg font-semibold flex items-center gap-2">
+          {value}
+          {copied && <span className="text-xs text-secondary">Copied</span>}
+        </p>
+      </div>
+    </button>
+  );
+};
+
 export default function Contact() {
+  const contactDetails = [
+    {
+      title: "Call Us",
+      value: `+91 ${import.meta.env.VITE_MOBILE}`,
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="size-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Email Us",
+      value: import.meta.env.VITE_MAIL,
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="size-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m22 2-7 20-4-9-9-4Z" />
+          <path d="M22 2 11 13" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <section id="contact" className="section-container bg-primary text-light">
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-20 w-full max-w-6xl mx-auto">
@@ -77,52 +163,14 @@ export default function Contact() {
           </div>
 
           <div className="space-y-6">
-            <div className="flex items-center gap-6 group">
-              <div className="size-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-6"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted">
-                  Call Us
-                </p>
-                <p className="text-lg font-semibold">+1 (555) 000-0000</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6 group">
-              <div className="size-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-6"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m22 2-7 20-4-9-9-4Z" />
-                  <path d="M22 2 11 13" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted">
-                  Email Us
-                </p>
-                <p className="text-lg font-semibold">hello@anthronxt.ai</p>
-              </div>
-            </div>
+            {contactDetails.map((item, index) => (
+              <ContactItem
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                value={item.value}
+              />
+            ))}
           </div>
         </div>
       </div>
