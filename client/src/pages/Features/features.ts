@@ -1,9 +1,10 @@
 export const sections = {
   about: {
-    title: "About Anthronxt",
+    title: `About ${import.meta.env.VITE_APP_NAME}`,
     tagline: "Empowering Careers through Innovation",
-    description:
-      "Anthronxt is more than just a platform; it's your personal career companion. Born from the need to democratize high-level interview coaching and skill mapping.",
+    description: `${
+      import.meta.env.VITE_APP_NAME
+    } is more than just a platform; it's your personal career companion. Born from the need to democratize high-level interview coaching and skill mapping."`,
     points: [
       {
         title: "Our Mission",

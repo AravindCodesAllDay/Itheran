@@ -31,9 +31,9 @@ export default function AboutUs() {
           </h2>
 
           <p className="text-lg md:text-xl text-muted leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Anthronxt is a collective of educators, developers, and innovators
-            committed to transforming professional growth through intelligent,
-            human-centric AI tools.
+            {import.meta.env.VITE_APP_NAME} is a collective of educators,
+            developers, and innovators committed to transforming professional
+            growth through intelligent, human-centric AI tools.
           </p>
           <Link to={"/features/about"}>
             <button className="px-10 py-4 rounded-2xl bg-secondary text-primary font-bold text-lg hover:bg-accent hover:scale-105 transition-all duration-300 shadow-glow">

@@ -76,7 +76,9 @@ export default function Navbar() {
           style={{ color: "var(--light)" }}
         >
           <span className="text-light">★</span>
-          <span className="text-secondary">Anthronxt</span>
+          <span className="text-secondary">
+            {import.meta.env.VITE_APP_NAME}
+          </span>
         </Link>
 
         <div className="ml-auto hidden md:flex items-center space-x-8">

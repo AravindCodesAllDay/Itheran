@@ -133,7 +133,9 @@ export default function Footer() {
           {/* Logo/Brand Name */}
           <div className="flex items-center text-3xl font-bold tracking-tight text-light">
             <span className="text-light mr-2">★</span>
-            <span className="text-secondary">Anthronxt</span>
+            <span className="text-secondary">
+              {import.meta.env.VITE_APP_NAME}
+            </span>
           </div>
 
           {/* Social Icons & Theme Toggle */}
@@ -255,8 +257,8 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest uppercase">
           <p>
-            © {new Date().getFullYear()} Anthronxt Solutions Private Limited.
-            Empowering growth with AI.
+            © {new Date().getFullYear()}
+            {import.meta.env.VITE_APP_NAME_FULL}. Empowering growth with AI.
           </p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-secondary transition-colors">

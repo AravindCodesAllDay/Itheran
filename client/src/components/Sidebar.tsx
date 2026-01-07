@@ -12,7 +12,11 @@ interface SidebarProps {
 
 export default function Sidebar({ activeId, onSelect }: SidebarProps) {
   const items = [
-    { id: "about", icon: aboutus, label: "About Anthronxt" },
+    {
+      id: "about",
+      icon: aboutus,
+      label: `About ${import.meta.env.VITE_APP_NAME}`,
+    },
     { id: "ai-interview", icon: interview, label: "AI Interview" },
     { id: "skill-training", icon: skills, label: "Skill Training" },
     { id: "resume-gen", icon: resume, label: "Resume Generation" },
