@@ -17,10 +17,10 @@ export default function Home() {
         <RoadMap />
       </div>
       <div className="reveal">
-        <Contact />
+        <AboutUs />
       </div>
       <div className="reveal">
-        <AboutUs />
+        <Contact />
       </div>
     </div>
   );

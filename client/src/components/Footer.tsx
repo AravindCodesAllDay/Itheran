@@ -11,7 +11,7 @@ const SocialIcon = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="size-6 flex items-center justify-center transition duration-300 hover:scale-110 stroke-primary hover:stroke-secondary"
+    className="size-10 rounded-full bg-primary/5 hover:bg-brand-secondary dark:bg-white/5 dark:hover:bg-brand-secondary flex items-center justify-center transition duration-300 hover:scale-110 hover:text-white text-muted"
   >
     {children}
   </a>
@@ -33,11 +33,17 @@ const CopyText = ({ value }: { value: string }) => {
   return (
     <button
       onClick={handleCopy}
-      className="flex items-center gap-3 text-sm hover:text-secondary transition-colors"
+      className="flex items-center gap-3 text-sm hover:text-brand-secondary transition-colors group"
       title="Click to copy"
     >
-      <span className="font-medium">{value}</span>
-      {copied && <span className="text-xs text-secondary">Copied!</span>}
+      <span className="font-medium text-muted group-hover:text-light transition-colors">
+        {value}
+      </span>
+      {copied && (
+        <span className="text-xs text-brand-secondary font-bold animate-pulse">
+          Copied!
+        </span>
+      )}
     </button>
   );
 };
@@ -58,7 +64,7 @@ export default function Footer() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-5"
         >
           <path
             strokeLinecap="round"
@@ -77,7 +83,7 @@ export default function Footer() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-5"
         >
           <path
             strokeLinecap="round"
@@ -96,7 +102,7 @@ export default function Footer() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-5"
         >
           <path
             strokeLinecap="round"
@@ -126,21 +132,19 @@ export default function Footer() {
   const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
-    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-4xl border-white/10 bg-primary text-muted">
+    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto flex flex-col space-y-12">
         {/* TOP SECTION: Logo, Nav, Socials */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
           {/* Logo/Brand Name */}
-          <div className="flex items-center text-3xl font-bold tracking-tight text-light">
-            <span className="text-light mr-2">★</span>
-            <span className="text-secondary">
-              {import.meta.env.VITE_APP_NAME}
-            </span>
+          <div className="flex items-center text-3xl font-display font-bold tracking-tight text-light">
+            <span className="text-secondary mr-2 text-4xl">★</span>
+            <span className="text-light">{import.meta.env.VITE_APP_NAME}</span>
           </div>
 
           {/* Social Icons & Theme Toggle */}
           <div className="flex items-center space-x-8">
-            <div className="flex space-x-6">
+            <div className="flex space-x-4">
               <SocialIcon href="https://linkedin.com">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,6 +154,7 @@ export default function Footer() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="size-5"
                 >
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
@@ -165,6 +170,7 @@ export default function Footer() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="size-5"
                 >
                   <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                 </svg>
@@ -178,6 +184,7 @@ export default function Footer() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="size-5"
                 >
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
@@ -186,17 +193,14 @@ export default function Footer() {
 
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-2xl bg-surface border border-white/10 hover:border-secondary/50 transition-all duration-300"
+              className="p-3 rounded-full bg-white dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-secondary transition-all duration-300 shadow-sm hover:rotate-12"
               aria-label="Toggle Theme"
-              style={{ color: "var(--light)" }}
             >
               {isDark ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
+                  className="h-5 w-5 text-yellow-400 fill-current"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
                   <path
                     strokeLinecap="round"
@@ -208,10 +212,8 @@ export default function Footer() {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
+                  className="h-5 w-5 text-indigo-600 fill-current"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
                   <path
                     strokeLinecap="round"
@@ -228,10 +230,15 @@ export default function Footer() {
         {/* MIDDLE SECTION: Contact Info and Newsletter */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <h4 className="text-light font-display font-bold text-lg">
+              Contact Us
+            </h4>
             {contactInfo.map((item, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <span className="text-muted">{item.icon}</span>
+              <div key={index} className="flex items-center gap-4">
+                <div className="size-10 rounded-full bg-primary/5 dark:bg-white/5 flex items-center justify-center text-secondary">
+                  {item.icon}
+                </div>
                 <CopyText value={item.value} />
               </div>
             ))}
@@ -239,26 +246,25 @@ export default function Footer() {
 
           {/* Newsletter Subscription */}
           <div className="flex flex-col">
-            <h4 className="text-light font-semibold uppercase tracking-wider mb-4">
+            <h4 className="text-light font-display font-bold text-lg mb-4">
               Stay Updated
             </h4>
-            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-surface rounded-2xl border border-white/5">
+            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-white dark:bg-white/5 rounded-3xl border border-black/5 dark:border-white/5 shadow-sm">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-transparent focus:outline-none text-light"
+                className="flex-1 px-6 py-3 rounded-2xl bg-transparent focus:outline-none text-light placeholder-muted font-medium"
               />
-              <button className="px-6 py-3 rounded-xl bg-secondary text-primary font-bold hover:bg-accent transition-colors">
+              <button className="px-8 py-3 rounded-2xl bg-brand-primary text-white font-bold hover:bg-brand-secondary transition-colors duration-300">
                 Subscribe
               </button>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest uppercase">
+        <div className="pt-8 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold tracking-widest uppercase">
           <p>
-            © {new Date().getFullYear()}
-            {import.meta.env.VITE_APP_NAME_FULL}. Empowering growth with AI.
+            © {new Date().getFullYear()} {import.meta.env.VITE_APP_NAME_FULL}
           </p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-secondary transition-colors">

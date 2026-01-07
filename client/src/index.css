@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poetsen One", "Inter", sans-serif;
 
   /* Base Theme Colors linked to variables */
   --color-primary: var(--primary);
@@ -15,38 +15,40 @@
   --color-muted: var(--muted);
   --color-light-gray: var(--light-gray);
 
-  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
+  --shadow-premium: 0 10px 30px -10px rgba(113, 75, 103, 0.2);
+  --shadow-glow: 0 0 20px rgba(1, 126, 132, 0.2);
 
-  /* Shared (Primary/Secondary from original but named for context) */
-  --color-brand-primary: #0b0e14;
-  --color-brand-secondary: #b7d593;
-  --color-brand-accent: #7c9d64;
+  /* Shared */
+  --color-brand-primary: #714b67;
+  --color-brand-secondary: #017e84;
+  --color-brand-accent: #f0ad4e;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
+    /* Odoo-inspired Light Mode: Clean, solid, fun */
     --primary: #ffffff;
-    --secondary: #2d4f1e;
-    --accent: #4a7a35;
-    --surface: #f1f5f9;
-    --glass: rgba(255, 255, 255, 0.8);
-    --light: #0f172a;
-    --muted: #475569;
+    --secondary: #714b67; /* Odoo Purple */
+    --accent: #017e84; /* Odoo Teal */
+    --surface: #f9fafb; /* Very light gray for contrast */
+    --glass: rgba(255, 255, 255, 1); /* Solid in light mode (no glass) */
+    --light: #181824; /* Dark text for light mode */
+    --muted: #64748b;
     --light-gray: #e2e8f0;
   }
 
   .dark {
-    --primary: #0b0e14;
-    --secondary: #b7d593;
-    --accent: #7c9d64;
-    --surface: #161b22;
-    --glass: rgba(22, 27, 34, 0.7);
-    --light: #f0f4f8;
-    --muted: #8b949e;
-    --light-gray: #1f242c;
+    /* Modern Dark Mode: Sleek, glass enabled */
+    --primary: #181824; /* Deep Dark Blue/Purple Background */
+    --secondary: #017e84; /* Odoo Teal as primary active color in dark */
+    --accent: #f0ad4e; /* Gold/Yellow alerts */
+    --surface: #222233; /* Slightly lighter dark */
+    --glass: rgba(30, 30, 45, 0.6); /* Translucent in dark mode */
+    --light: #f0f4f8; /* Light text for dark mode */
+    --muted: #94a3b8;
+    --light-gray: #2d2d3f;
   }
 
   html {
@@ -64,19 +66,33 @@
   h2,
   h3,
   h4 {
-    @apply font-display;
+    @apply font-display text-secondary dark:text-light;
   }
 }
 
 @layer components {
+  /* Dynamic Glass: Solid/Invisible in Light, Glassy in Dark */
   .glass {
     background-color: var(--glass);
+    border: 1px solid transparent;
+  }
+
+  .dark .glass {
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .section-container {
     @apply relative px-6 lg:px-32 py-24;
+  }
+
+  /* "Fun" Button/Card Styles */
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl bg-secondary text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
+  }
+
+  .card-fun {
+    @apply rounded-3xl bg-surface p-6 transition-all hover:-translate-y-2 hover:shadow-premium;
   }
 }
 
@@ -110,14 +126,59 @@
   animation: float 4s ease-in-out infinite;
 }
 
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.hover\:animate-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -132,7 +193,7 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -140,11 +201,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--surface);
+  background-color: var(--secondary);
   border-radius: 9999px;
-  transition: background-color 0.2s;
+  border: 2px solid var(--primary); /* Makes it look pill-shaped */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--muted);
+  background-color: var(--accent);
 }
