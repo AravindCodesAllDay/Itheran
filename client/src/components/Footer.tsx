@@ -264,7 +264,8 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold tracking-widest uppercase">
           <p>
-            © {new Date().getFullYear()} {import.meta.env.VITE_APP_NAME_FULL}
+            © {new Date().getFullYear()} {import.meta.env.VITE_APP_NAME}{" "}
+            Solutions Private Limited
           </p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-secondary transition-colors">
