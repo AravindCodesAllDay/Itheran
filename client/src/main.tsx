@@ -8,9 +8,12 @@ import Home from "./pages/Home";
 import Features from "./pages/Features";
 import PageNotFound from "./pages/404";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route index element={<Home />} />
@@ -20,5 +23,5 @@ createRoot(document.getElementById("root")!).render(
         </Routes>
       </Layout>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

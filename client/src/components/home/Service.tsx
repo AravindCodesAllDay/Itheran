@@ -125,11 +125,11 @@ export default function Service() {
         <div className="inline-block px-4 py-2 rounded-2xl bg-brand-accent text-white text-xs font-black uppercase tracking-widest transform rotate-2">
           Our Expertise
         </div>
-        <h3 className="text-5xl md:text-6xl font-display font-bold text-light">
+        <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light">
           Immersive Learning <br />
           <span className="relative inline-block text-brand-secondary">
             Solutions
-            <Squiggle className="text-brand-accent w-full -bottom-4 left-0 h-6" />
+            <Squiggle className="text-brand-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
           </span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed font-medium mt-4">
@@ -145,7 +145,7 @@ export default function Service() {
       </div>
 
       {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] bg-brand-secondary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-brand-secondary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 }

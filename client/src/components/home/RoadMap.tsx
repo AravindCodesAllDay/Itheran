@@ -55,7 +55,7 @@ export default function RoadMap() {
         </div>
         <div className="relative">
           <StarBurst className="text-yellow-400 absolute -top-10 -right-10 w-16 h-16 animate-spin-slow" />
-          <h3 className="text-5xl md:text-6xl font-display font-bold text-light z-10 relative">
+          <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light z-10 relative">
             How We <span className="text-brand-secondary">Work</span>
           </h3>
         </div>
@@ -74,7 +74,7 @@ export default function RoadMap() {
               key={index}
               onClick={() => toggleStep(index)}
               className={`
-                  relative overflow-hidden rounded-[2.5rem] p-8 cursor-pointer 
+                  relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 cursor-pointer 
                   transition-all duration-500 ease-in-out border-4
                   ${
                     isOpen
@@ -148,7 +148,7 @@ export default function RoadMap() {
                     `}
                 >
                   <div className="overflow-hidden">
-                    <p className="pl-20 max-w-2xl text-lg leading-relaxed font-medium opacity-90">
+                    <p className="pl-0 md:pl-20 mt-4 md:mt-0 max-w-2xl text-base md:text-lg leading-relaxed font-medium opacity-90">
                       {item.desc}
                     </p>
                   </div>

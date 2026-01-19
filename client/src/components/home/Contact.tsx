@@ -91,7 +91,7 @@ export default function Contact() {
         <h2 className="inline-block px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/5 text-secondary text-xs font-bold uppercase tracking-[0.2em]">
           Get In Touch
         </h2>
-        <h3 className="text-4xl md:text-5xl font-bold text-light">
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light">
           Let's Start a <span className="text-secondary">Conversation</span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed">
@@ -102,7 +102,7 @@ export default function Contact() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
         {/* LEFT = FORM */}
-        <form className="glass p-10 rounded-[2.5rem] space-y-6 border-white/10">
+        <form className="glass p-6 md:p-10 rounded-[2.5rem] space-y-6 border-white/10">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-muted mb-2 ml-1">
@@ -112,7 +112,7 @@ export default function Contact() {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-secondary/50 transition-colors text-light"
+                className="w-full px-5 py-4 rounded-2xl bg-surface/80 dark:bg-white/5 border border-primary/10 dark:border-white/10 outline-none focus:border-secondary/50 transition-colors text-light"
               />
             </div>
             <div>
@@ -123,7 +123,7 @@ export default function Contact() {
                 type="email"
                 required
                 placeholder="john@example.com"
-                className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-secondary/50 transition-colors text-light"
+                className="w-full px-5 py-4 rounded-2xl bg-surface/80 dark:bg-white/5 border border-primary/10 dark:border-white/10 outline-none focus:border-secondary/50 transition-colors text-light"
               />
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function Contact() {
               required
               rows={4}
               placeholder="Tell us about your needs..."
-              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-secondary/50 transition-colors text-light resize-none"
+              className="w-full px-5 py-4 rounded-2xl bg-surface/80 dark:bg-white/5 border border-primary/10 dark:border-white/10 outline-none focus:border-secondary/50 transition-colors text-light resize-none"
             />
           </div>
 

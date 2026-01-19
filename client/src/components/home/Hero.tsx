@@ -43,11 +43,11 @@ export default function Hero() {
         {/* Heading */}
         <div className="relative">
           <StarBurst className="text-yellow-400 -top-8 -right-8 w-16 h-16 animate-spin-slow" />
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display leading-none text-light drop-shadow-sm">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display leading-tight md:leading-none text-light drop-shadow-sm">
             Avatar-Based <br />
             <span className="relative inline-block text-secondary transform -rotate-2 hover:rotate-3 transition-transform duration-300">
               Skill Training
-              <Squiggle className="text-accent w-full -bottom-4 left-0 h-6" />
+              <Squiggle className="text-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
             </span>
           </h1>
         </div>

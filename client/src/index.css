@@ -30,8 +30,8 @@
   :root {
     /* Odoo-inspired Light Mode: Clean, solid, fun */
     --primary: #ffffff;
-    --secondary: #714b67; /* Odoo Purple */
-    --accent: #017e84; /* Odoo Teal */
+    --secondary: #017e84; /* Odoo Teal (Swapped) */
+    --accent: #714b67; /* Odoo Purple (Swapped) */
     --surface: #f9fafb; /* Very light gray for contrast */
     --glass: rgba(255, 255, 255, 1); /* Solid in light mode (no glass) */
     --light: #181824; /* Dark text for light mode */
@@ -42,7 +42,7 @@
   .dark {
     /* Modern Dark Mode: Sleek, glass enabled */
     --primary: #181824; /* Deep Dark Blue/Purple Background */
-    --secondary: #017e84; /* Odoo Teal as primary active color in dark */
+    --secondary: #017e84; /* Teal continues as primary */
     --accent: #f0ad4e; /* Gold/Yellow alerts */
     --surface: #222233; /* Slightly lighter dark */
     --glass: rgba(30, 30, 45, 0.6); /* Translucent in dark mode */
@@ -53,7 +53,9 @@
 
   html {
     scroll-behavior: smooth;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   body {
@@ -208,4 +210,13 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

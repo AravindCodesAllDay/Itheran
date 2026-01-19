@@ -23,13 +23,13 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
   ];
 
   return (
-    <aside className="w-64 h-[calc(100vh-80px)] sticky top-20 hidden lg:block border-r border-white/5 pr-4">
-      <nav className="flex flex-col space-y-2">
+    <aside className="w-full lg:w-64 lg:h-[calc(100vh-80px)] sticky lg:top-28 z-40 border-b lg:border-b-0 lg:border-r border-white/5 pr-0 lg:pr-4 bg-surface/95 backdrop-blur-sm lg:bg-transparent mb-8 lg:mb-0">
+      <nav className="flex flex-row lg:flex-col space-x-4 lg:space-x-0 lg:space-y-2 overflow-x-auto pb-4 lg:pb-0 hide-scrollbar">
         {items.map((item) => (
           <button
             key={item.id}
             onClick={() => onSelect(item.id)}
-            className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
+            className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group whitespace-nowrap ${
               activeId === item.id
                 ? "bg-secondary text-primary shadow-lg scale-105"
                 : "hover:bg-surface text-muted hover:text-light"
@@ -48,7 +48,7 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
         ))}
       </nav>
 
-      <div className="mt-8 p-4 rounded-2xl bg-surface border border-white/5">
+      <div className="mt-8 p-4 rounded-2xl bg-surface border border-white/5 hidden lg:block">
         <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">
           Need Help?
         </h4>

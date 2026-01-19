@@ -132,7 +132,7 @@ export default function Footer() {
   const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
-    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
+    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-secondary/5 dark:bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto flex flex-col space-y-12">
         {/* TOP SECTION: Logo, Nav, Socials */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
