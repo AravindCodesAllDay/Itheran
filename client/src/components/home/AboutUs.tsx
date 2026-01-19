@@ -28,15 +28,15 @@ export default function AboutUs() {
       >
         {/* LEFT SECTION */}
         <div className="flex-1 space-y-6 relative z-10 text-center lg:text-left">
-          <div className="inline-block px-4 py-2 rounded-2xl bg-brand-secondary text-white text-xs font-black uppercase tracking-widest transform -rotate-2">
+          <div className="inline-block px-4 py-2 rounded-2xl bg-secondary text-white text-xs font-black uppercase tracking-widest transform -rotate-2">
             Our Story 📖
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-brand-primary dark:text-light tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-accent dark:text-light tracking-tight">
             Who We <br />
-            <span className="relative inline-block text-brand-secondary">
+            <span className="relative inline-block text-secondary">
               Are
-              <UnderlineDoodle className="text-brand-accent w-full -bottom-2 left-0 h-4" />
+              <UnderlineDoodle className="text-accent w-full -bottom-2 left-0 h-4" />
             </span>
           </h2>
 
@@ -47,7 +47,7 @@ export default function AboutUs() {
           </p>
 
           <Link to={"/features/about"}>
-            <button className="mt-4 px-10 py-4 rounded-2xl bg-brand-primary text-white font-black text-lg hover:bg-brand-secondary hover:scale-105 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none translate-y-0 active:translate-y-1">
+            <button className="mt-4 px-10 py-4 rounded-2xl bg-accent text-white font-black text-lg hover:bg-secondary hover:scale-105 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none translate-y-0 active:translate-y-1">
               Know More
             </button>
           </Link>
@@ -57,7 +57,7 @@ export default function AboutUs() {
         <div className="flex-1 flex items-center justify-center mt-12 lg:mt-0 relative z-10">
           <div className="relative transform hover:scale-105 transition-transform duration-500">
             {/* Blob behind Lottie */}
-            <div className="absolute inset-0 bg-brand-accent/20 blur-[60px] rounded-full animate-pulse" />
+            <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full animate-pulse" />
             <Lottie options={defaultOptions} height={400} width={400} />
           </div>
         </div>
@@ -66,8 +66,8 @@ export default function AboutUs() {
       {/* MISSION + VISION */}
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Mission Card */}
-        <div className="bg-purple-50 dark:bg-purple-900/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-purple-100 dark:border-purple-500/20 hover:border-purple-300 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
-          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-purple-600 dark:text-purple-300 mb-6 group-hover:scale-110 transition-transform duration-300 rotate-3">
+        <div className="bg-accent/5 dark:bg-accent/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-accent/10 dark:border-accent/20 hover:border-accent transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
+          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-300 rotate-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="size-10"
@@ -83,10 +83,10 @@ export default function AboutUs() {
               <path d="m8 8 8 8" />
             </svg>
           </div>
-          <h3 className="text-4xl font-display font-bold mb-4 text-purple-900 dark:text-purple-100">
+          <h3 className="text-4xl font-display font-bold mb-4 text-accent dark:text-white">
             Our Mission
           </h3>
-          <p className="text-purple-800/80 dark:text-purple-200/70 text-lg leading-relaxed font-medium">
+          <p className="text-muted text-lg leading-relaxed font-medium">
             We democratize skill development through AI-driven simulations,
             empowering everyone to build soft and technical capabilities that
             matter in the real world.
@@ -94,8 +94,8 @@ export default function AboutUs() {
         </div>
 
         {/* Vision Card */}
-        <div className="bg-teal-50 dark:bg-teal-900/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-teal-100 dark:border-teal-500/20 hover:border-teal-300 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
-          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-teal-600 dark:text-teal-300 mb-6 group-hover:scale-110 transition-transform duration-300 -rotate-3">
+        <div className="bg-secondary/5 dark:bg-secondary/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-secondary/10 dark:border-secondary/20 hover:border-secondary transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
+          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform duration-300 -rotate-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="size-10"
@@ -111,10 +111,10 @@ export default function AboutUs() {
               <line x1="12" y1="22" x2="12" y2="12" />
             </svg>
           </div>
-          <h3 className="text-4xl font-display font-bold mb-4 text-teal-900 dark:text-teal-100">
+          <h3 className="text-4xl font-display font-bold mb-4 text-secondary dark:text-white">
             Our Vision
           </h3>
-          <p className="text-teal-800/80 dark:text-teal-200/70 text-lg leading-relaxed font-medium">
+          <p className="text-muted text-lg leading-relaxed font-medium">
             To be the global standard for immersive career development tools —
             accessible, adaptive, and impactful for every learner, everywhere.
           </p>

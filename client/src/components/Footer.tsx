@@ -1,52 +1,6 @@
-import React, { useState, useEffect } from "react";
-
-const SocialIcon = ({
-  children,
-  href,
-}: {
-  children: React.ReactNode;
-  href: string;
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="size-10 rounded-full bg-primary/5 hover:bg-brand-secondary dark:bg-white/5 dark:hover:bg-brand-secondary flex items-center justify-center transition duration-300 hover:scale-110 hover:text-white text-muted"
-  >
-    {children}
-  </a>
-);
-
-const CopyText = ({ value }: { value: string }) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
-    } catch (err) {
-      console.error("Copy failed", err);
-    }
-  };
-
-  return (
-    <button
-      onClick={handleCopy}
-      className="flex items-center gap-3 text-sm hover:text-brand-secondary transition-colors group"
-      title="Click to copy"
-    >
-      <span className="font-medium text-muted group-hover:text-light transition-colors">
-        {value}
-      </span>
-      {copied && (
-        <span className="text-xs text-brand-secondary font-bold animate-pulse">
-          Copied!
-        </span>
-      )}
-    </button>
-  );
-};
+import { useState, useEffect } from "react";
+import SocialIcon from "./footer/SocialIcon";
+import ClickToCopy from "./common/ClickToCopy";
 
 export default function Footer() {
   const [isDark, setIsDark] = useState(() => {
@@ -132,7 +86,7 @@ export default function Footer() {
   const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
-    <footer className="w-full mt-auto py-16 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-secondary/5 dark:bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
+    <footer className="w-full mt-auto py-10 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-secondary/5 dark:bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto flex flex-col space-y-12">
         {/* TOP SECTION: Logo, Nav, Socials */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
@@ -145,7 +99,7 @@ export default function Footer() {
           {/* Social Icons & Theme Toggle */}
           <div className="flex items-center space-x-8">
             <div className="flex space-x-4">
-              <SocialIcon href="https://linkedin.com">
+              <SocialIcon href="https://linkedin.com" variant="linkedin">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -161,7 +115,7 @@ export default function Footer() {
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
               </SocialIcon>
-              <SocialIcon href="https://twitter.com">
+              <SocialIcon href="https://twitter.com" variant="twitter">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -175,7 +129,7 @@ export default function Footer() {
                   <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                 </svg>
               </SocialIcon>
-              <SocialIcon href="https://facebook.com">
+              <SocialIcon href="https://facebook.com" variant="facebook">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -193,7 +147,7 @@ export default function Footer() {
 
             <button
               onClick={toggleTheme}
-              className="p-3 rounded-full bg-white dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-secondary transition-all duration-300 shadow-sm hover:rotate-12"
+              className="p-3 rounded-full bg-surface dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-secondary transition-all duration-300 shadow-sm hover:rotate-12"
               aria-label="Toggle Theme"
             >
               {isDark ? (
@@ -231,15 +185,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Contact Info */}
           <div className="space-y-6">
-            <h4 className="text-light font-display font-bold text-lg">
-              Contact Us
-            </h4>
             {contactInfo.map((item, index) => (
-              <div key={index} className="flex items-center gap-4">
-                <div className="size-10 rounded-full bg-primary/5 dark:bg-white/5 flex items-center justify-center text-secondary">
+              <div key={index} className="flex items-center gap-2">
+                <div className="size-10 rounded-full bg-surface dark:bg-white/5 border border-black/5 dark:border-transparent flex items-center justify-center text-secondary shadow-sm">
                   {item.icon}
                 </div>
-                <CopyText value={item.value} />
+                <ClickToCopy value={item.value} />
               </div>
             ))}
           </div>
@@ -253,9 +204,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-2xl bg-transparent focus:outline-none text-light placeholder-muted font-medium"
+                className="flex-1 px-6 py-3 rounded-2xl bg-surface-highlight border border-transparent dark:bg-transparent dark:border-none focus:outline-none text-light placeholder-muted font-medium focus:ring-2 focus:ring-secondary/20"
               />
-              <button className="px-8 py-3 rounded-2xl bg-brand-primary text-white font-bold hover:bg-brand-secondary transition-colors duration-300">
+              <button className="px-8 py-3 rounded-2xl bg-secondary text-white font-bold hover:bg-accent transition-colors duration-300 shadow-lg shadow-secondary/20">
                 Subscribe
               </button>
             </div>

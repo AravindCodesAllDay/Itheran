@@ -19,6 +19,11 @@ interface ServiceItem {
 // --- ServiceCard Component ---
 interface ServiceCardProps extends ServiceItem {
   style?: React.CSSProperties;
+  className?: string;
+  iconWrapperClass?: string;
+  arrowClass?: string;
+  arrowIconClass?: string;
+  titleClass?: string;
 }
 
 const ServiceCard: FC<ServiceCardProps> = ({
@@ -26,6 +31,11 @@ const ServiceCard: FC<ServiceCardProps> = ({
   title,
   description,
   illustration,
+  className,
+  iconWrapperClass,
+  arrowClass,
+  arrowIconClass,
+  titleClass,
 }) => {
   const [isPaused, setIsPaused] = useState(true);
 
@@ -43,10 +53,18 @@ const ServiceCard: FC<ServiceCardProps> = ({
       to={`/features/${id}`}
       onMouseEnter={() => setIsPaused(false)}
       onMouseLeave={() => setIsPaused(true)}
-      className="group bg-white dark:bg-white/5 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] hover:border-brand-secondary transition-all duration-300 overflow-hidden cursor-pointer"
+      className={
+        className ||
+        "group bg-white dark:bg-white/5 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] hover:border-secondary transition-all duration-300 overflow-hidden cursor-pointer"
+      }
     >
       <div className="flex justify-between items-center">
-        <div className="size-20 rounded-3xl bg-surface dark:bg-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300">
+        <div
+          className={
+            iconWrapperClass ||
+            "size-20 rounded-3xl bg-surface dark:bg-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300"
+          }
+        >
           {/* Lottie Animation Container */}
           <div className="w-full h-full pointer-events-none">
             <Lottie
@@ -59,10 +77,18 @@ const ServiceCard: FC<ServiceCardProps> = ({
         </div>
 
         {/* Arrow Icon */}
-        <div className="bg-brand-secondary/10 dark:bg-brand-secondary/20 size-12 rounded-full flex items-center justify-center group-hover:bg-brand-secondary transition-colors duration-300">
+        <div
+          className={
+            arrowClass ||
+            "bg-secondary/10 dark:bg-secondary/20 size-12 rounded-full flex items-center justify-center group-hover:bg-secondary transition-colors duration-300"
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="size-6 text-brand-secondary group-hover:text-white transition-colors"
+            className={
+              arrowIconClass ||
+              "size-6 text-secondary group-hover:text-white transition-colors"
+            }
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -76,7 +102,12 @@ const ServiceCard: FC<ServiceCardProps> = ({
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-2xl font-display font-bold text-light group-hover:text-brand-secondary transition-colors">
+        <h4
+          className={
+            titleClass ||
+            "text-2xl font-display font-bold text-light group-hover:text-secondary transition-colors"
+          }
+        >
           {title}
         </h4>
         <p className="text-muted text-base leading-relaxed font-medium">
@@ -91,13 +122,22 @@ const ServiceCard: FC<ServiceCardProps> = ({
 export default function Service() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const services: ServiceItem[] = [
+  const services: (ServiceItem & {
+    hoverBorder: string;
+    hoverText: string;
+    iconBg: string;
+    iconColor: string;
+  })[] = [
     {
       id: "ai-interview",
       title: "AI Interview",
       description:
         "Emotion-aware AI that analyzes facial cues and voice data to provide real-time feedback.",
       illustration: interview,
+      hoverBorder: "hover:border-accent",
+      hoverText: "group-hover:text-accent dark:group-hover:text-accent",
+      iconBg: "group-hover:bg-accent/10 dark:group-hover:bg-accent/20",
+      iconColor: "text-accent",
     },
     {
       id: "resume-gen",
@@ -105,6 +145,10 @@ export default function Service() {
       description:
         "AI-powered resume crafting that optimizes for ATS and highlights your impact.",
       illustration: resume,
+      hoverBorder: "hover:border-secondary",
+      hoverText: "group-hover:text-secondary dark:group-hover:text-secondary",
+      iconBg: "group-hover:bg-secondary/10 dark:group-hover:bg-secondary/20",
+      iconColor: "text-secondary",
     },
     {
       id: "skill-training",
@@ -112,6 +156,10 @@ export default function Service() {
       description:
         "Personalized roadmaps and curated resources to help you bridge the tech gap.",
       illustration: skills,
+      hoverBorder: "hover:border-warning",
+      hoverText: "group-hover:text-warning dark:group-hover:text-warning",
+      iconBg: "group-hover:bg-warning/10 dark:group-hover:bg-warning/20",
+      iconColor: "text-warning",
     },
   ];
 
@@ -122,14 +170,14 @@ export default function Service() {
       className="section-container bg-surface overflow-hidden"
     >
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-16 w-full max-w-6xl mx-auto">
-        <div className="inline-block px-4 py-2 rounded-2xl bg-brand-accent text-white text-xs font-black uppercase tracking-widest transform rotate-2">
+        <div className="inline-block px-4 py-2 rounded-2xl bg-accent text-white text-xs font-black uppercase tracking-widest transform rotate-2">
           Our Expertise
         </div>
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light">
           Immersive Learning <br />
-          <span className="relative inline-block text-brand-secondary">
+          <span className="relative inline-block text-secondary">
             Solutions
-            <Squiggle className="text-brand-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
+            <Squiggle className="text-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
           </span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed font-medium mt-4">
@@ -140,12 +188,20 @@ export default function Service() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-10">
         {services.map((s, i) => (
-          <ServiceCard key={i} {...s} />
+          <ServiceCard
+            key={i}
+            {...s}
+            className={`group bg-white dark:bg-white/5 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] ${s.hoverBorder} transition-all duration-300 overflow-hidden cursor-pointer`}
+            iconWrapperClass={`size-20 rounded-3xl bg-surface dark:bg-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300 ${s.iconBg}`}
+            arrowClass={`bg-secondary/10 dark:bg-secondary/20 size-12 rounded-full flex items-center justify-center ${s.iconBg} transition-colors duration-300`}
+            arrowIconClass={`size-6 text-secondary group-hover:text-white transition-colors ${s.iconColor}`}
+            titleClass={`text-2xl font-display font-bold text-light ${s.hoverText} transition-colors`}
+          />
         ))}
       </div>
 
       {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-brand-secondary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-secondary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 }

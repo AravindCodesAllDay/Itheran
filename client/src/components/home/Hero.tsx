@@ -31,15 +31,15 @@ export default function Hero() {
     >
       {/* Fun Background Blobs */}
       <div
-        className="absolute top-0 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob dark:opacity-20 dark:mix-blend-normal"
-        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        className="absolute top-0 -left-20 size-60 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
       />
       <div
-        className="absolute top-0 -right-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
-        style={{ transform: `translateY(${scrollY * 0.6}px)` }}
+        className="absolute top-20 -right-24 size-74 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.8}px)` }}
       />
       <div
-        className="absolute -bottom-32 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
+        className="absolute -bottom-32 left-24 size-74 bg-warning rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       />
 
@@ -58,16 +58,16 @@ export default function Hero() {
           <StarBurst className="text-yellow-400 -top-8 -right-8 w-16 h-16 animate-spin-slow" />
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display leading-tight md:leading-none text-light drop-shadow-sm">
             Avatar-Based <br />
-            <span className="relative inline-block text-secondary transform -rotate-2 hover:rotate-3 transition-transform duration-300">
+            <span className="relative inline-block text-accent transform -rotate-2 hover:rotate-3 transition-transform duration-300">
               Skill Training
-              <Squiggle className="text-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
+              <Squiggle className="text-secondary w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
             </span>
           </h1>
         </div>
 
-        <p className="text-2xl md:text-3xl font-medium text-light max-w-3xl mx-auto leading-relaxed transform rotate-1">
+        <p className="text-lg md:text-3xl font-medium text-light max-w-3xl mx-auto leading-relaxed transform rotate-1">
           Simulate interviews, master soft skills, and grow with{" "}
-          <span className="font-bold text-secondary decoration-wavy underline decoration-accent">
+          <span className="font-bold text-accent decoration-wavy underline decoration-secondary">
             AI feedback
           </span>{" "}
           in a 3D world!
@@ -80,23 +80,23 @@ export default function Hero() {
           {[
             {
               color:
-                "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-100 dark:border-purple-500/30",
+                "bg-accent/10 text-accent dark:bg-accent/20 dark:text-white dark:border-white/5",
               text: "3D Avatar Interaction",
             },
             {
               color:
-                "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-100 dark:border-teal-500/30",
+                "bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-white dark:border-white/5",
               text: "No Credit Card Needed",
             },
             {
               color:
-                "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-100 dark:border-orange-500/30",
+                "bg-warning/10 text-warning dark:bg-warning/20 dark:text-white dark:border-white/5",
               text: "AI-Driven Feedback",
             },
           ].map((item, i) => (
             <div
               key={i}
-              className={`px-8 py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer hover:animate-wiggle border-2 border-transparent`}
+              className={`px-4 py-2 md:px-8 md:py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer hover:animate-wiggle border-2 border-transparent`}
             >
               {item.text}
             </div>
@@ -113,8 +113,8 @@ export default function Hero() {
 
       {/* Lottie Robot */}
       <div
-        className="absolute h-1/2 md:h-full z-10 pointer-events-none opacity-20 lg:opacity-60 lg:blur-sm"
-        style={{ transform: `translateY(${scrollY * 0.7}px)` }}
+        className="absolute h-3/5 md:h-[90%] md:right-0 md:top-10 z-0 pointer-events-none opacity-80 lg:opacity-100"
+        style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       >
         <Lottie options={defaultOptions} />
       </div>
