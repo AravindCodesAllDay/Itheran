@@ -23,7 +23,7 @@ export default function AboutUs() {
 
       {/* MAIN CARD */}
       <div
-        className="w-full bg-white dark:bg-white/5 rounded-[2rem] md:rounded-[3rem] shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)] border-2 border-primary/5 dark:border-white/5 flex flex-col lg:flex-row items-center justify-between 
+        className="w-full bg-white dark:bg-white/5 rounded-4xl md:rounded-[3rem] shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)] border-2 border-primary/5 dark:border-white/5 flex flex-col lg:flex-row items-center justify-between 
                    px-6 py-10 md:px-10 md:py-16 mb-16 md:mb-24 relative z-10 hover:-translate-y-2 transition-transform duration-500"
       >
         {/* LEFT SECTION */}

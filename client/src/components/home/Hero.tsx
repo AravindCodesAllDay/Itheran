@@ -30,9 +30,18 @@ export default function Hero() {
       className="relative flex justify-center items-center min-h-dvh w-full overflow-hidden bg-primary text-light"
     >
       {/* Fun Background Blobs */}
-      <div className="absolute top-0 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob dark:opacity-20 dark:mix-blend-normal" />
-      <div className="absolute top-0 -right-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal" />
-      <div className="absolute -bottom-32 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal" />
+      <div
+        className="absolute top-0 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob dark:opacity-20 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      />
+      <div
+        className="absolute top-0 -right-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.6}px)` }}
+      />
+      <div
+        className="absolute -bottom-32 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+      />
 
       {/* Main Content */}
       <div
@@ -56,7 +65,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        <p className="text-2xl md:text-3xl font-medium text-muted max-w-3xl mx-auto leading-relaxed transform rotate-1">
+        <p className="text-2xl md:text-3xl font-medium text-light max-w-3xl mx-auto leading-relaxed transform rotate-1">
           Simulate interviews, master soft skills, and grow with{" "}
           <span className="font-bold text-secondary decoration-wavy underline decoration-accent">
             AI feedback
@@ -87,7 +96,7 @@ export default function Hero() {
           ].map((item, i) => (
             <div
               key={i}
-              className={`px-8 py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 cursor-pointer hover:animate-wiggle border-2 border-transparent`}
+              className={`px-8 py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer hover:animate-wiggle border-2 border-transparent`}
             >
               {item.text}
             </div>
@@ -104,8 +113,8 @@ export default function Hero() {
 
       {/* Lottie Robot */}
       <div
-        className="absolute bottom-0 right-0 h-1/2 md:h-3/4 z-10 pointer-events-none opacity-20 lg:opacity-100 lg:blur-sm lg:right-[-10%]"
-        style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        className="absolute h-1/2 md:h-full z-10 pointer-events-none opacity-20 lg:opacity-60 lg:blur-sm"
+        style={{ transform: `translateY(${scrollY * 0.7}px)` }}
       >
         <Lottie options={defaultOptions} />
       </div>

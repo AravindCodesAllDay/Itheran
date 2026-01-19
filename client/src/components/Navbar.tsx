@@ -49,18 +49,13 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
-  // Close menu when location changes
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
-
   return (
     <div
       className={`fixed top-0 w-full z-50 flex justify-center transition-transform duration-500 will-change-transform ${
         visible ? "translate-y-0" : "-translate-y-32"
       }`}
     >
-      <nav className="relative transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex items-center px-6 md:px-8 mt-0 md:mt-4 w-full md:w-[90%] max-w-5xl rounded-none md:rounded-full glass shadow-premium border-b border-white/10 md:border md:border-white/20 py-4">
+      <nav className="relative transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex items-center px-6 md:px-8 mt-0 md:mt-4 w-full md:w-[90%] max-w-6xl rounded-none md:rounded-full glass shadow-premium border-b border-white/10 md:border md:border-white/20 py-4">
         <Link
           to="/"
           className="text-2xl font-display font-bold tracking-tight hover:opacity-80 transition duration-150 flex items-center gap-2"
