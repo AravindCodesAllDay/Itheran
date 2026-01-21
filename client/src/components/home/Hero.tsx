@@ -113,7 +113,7 @@ export default function Hero() {
 
       {/* Lottie Robot */}
       <div
-        className="absolute h-3/5 md:h-[90%] md:right-0 md:top-10 z-0 pointer-events-none opacity-80 lg:opacity-100"
+        className="absolute h-3/5 md:h-[90%] md:top-10 z-0 pointer-events-none opacity-80 lg:opacity-60"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       >
         <Lottie options={defaultOptions} />

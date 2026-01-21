@@ -25,11 +25,6 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
     { id: "resume-gen", icon: resume, label: "Resume Generation" },
   ];
 
-  // Close mobile drawer when selection changes
-  useEffect(() => {
-    setIsMobileOpen(false);
-  }, [activeId]);
-
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
     if (isMobileOpen) {
@@ -77,7 +72,10 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
       <MobileSidebar
         items={items}
         activeId={activeId}
-        onSelect={onSelect}
+        onSelect={(id) => {
+          onSelect(id);
+          setIsMobileOpen(false);
+        }}
         isOpen={isMobileOpen}
         setIsOpen={setIsMobileOpen}
       />
