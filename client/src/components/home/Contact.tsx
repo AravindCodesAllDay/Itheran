@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-container bg-surface relative z-10 rounded-t-[3rem] mt-[-2rem] pb-32"
+      className="section-container bg-surface relative z-10 rounded-t-[3rem]"
     >
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-20 w-full max-w-6xl mx-auto">
         <h2 className="inline-block px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-[0.2em]">
@@ -71,7 +71,7 @@ export default function Contact() {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-secondary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light placeholder-muted font-medium"
+                className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-contact-primary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light placeholder-muted font-medium"
               />
             </div>
             <div>
@@ -95,13 +95,13 @@ export default function Contact() {
               required
               rows={4}
               placeholder="Tell us about your needs..."
-              className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-secondary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light resize-none placeholder-muted font-medium"
+              className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-contact-primary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light resize-none placeholder-muted font-medium"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-5 rounded-2xl bg-secondary text-white font-bold text-lg hover:bg-accent hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-secondary/20 hover:shadow-accent/30"
+            className="w-full py-5 rounded-2xl bg-contact-primary text-white font-bold text-lg hover:bg-contact-secondary hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-contact-primary/20 hover:shadow-contact-secondary/30"
           >
             Send Message
           </button>
@@ -112,7 +112,7 @@ export default function Contact() {
           <div className="space-y-6">
             <h4 className="text-3xl font-bold tracking-tight">
               Connect With Us <br />
-              <span className="text-secondary">Anywhere, Anytime.</span>
+              <span className="text-contact-primary">Anywhere, Anytime.</span>
             </h4>
             <p className="text-muted text-lg leading-relaxed">
               Our team is dedicated to providing the best AI-driven training
@@ -127,7 +127,7 @@ export default function Contact() {
                 key={index}
                 className="flex items-center gap-6 group text-left w-full p-4 rounded-3xl hover:bg-white dark:hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-black/5 dark:hover:border-white/5 hover:shadow-sm"
               >
-                <div className="size-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-inner">
+                <div className="size-16 rounded-2xl bg-contact-primary/10 flex items-center justify-center text-contact-primary group-hover:bg-contact-primary group-hover:text-white transition-all duration-300 shadow-inner">
                   {item.icon}
                 </div>
                 <ClickToCopy

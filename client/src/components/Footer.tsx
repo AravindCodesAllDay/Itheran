@@ -92,7 +92,7 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
           {/* Logo/Brand Name */}
           <div className="flex items-center text-3xl font-display font-bold tracking-tight text-light">
-            <span className="text-secondary mr-2 text-4xl">★</span>
+            <span className="text-footer-primary mr-2 text-4xl">★</span>
             <span className="text-light">{import.meta.env.VITE_APP_NAME}</span>
           </div>
 
@@ -147,7 +147,7 @@ export default function Footer() {
 
             <button
               onClick={toggleTheme}
-              className="p-3 rounded-full bg-surface dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-secondary transition-all duration-300 shadow-sm hover:rotate-12"
+              className="p-3 rounded-full bg-surface dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-footer-primary transition-all duration-300 shadow-sm hover:rotate-12"
               aria-label="Toggle Theme"
             >
               {isDark ? (
@@ -187,7 +187,7 @@ export default function Footer() {
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
-                <div className="size-10 rounded-full bg-surface dark:bg-white/5 border border-black/5 dark:border-transparent flex items-center justify-center text-secondary shadow-sm">
+                <div className="size-10 rounded-full bg-surface dark:bg-white/5 border border-black/5 dark:border-transparent flex items-center justify-center text-footer-primary shadow-sm">
                   {item.icon}
                 </div>
                 <ClickToCopy value={item.value} />
@@ -200,13 +200,13 @@ export default function Footer() {
             <h4 className="text-light font-display font-bold text-lg mb-4">
               Stay Updated
             </h4>
-            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-white dark:bg-white/5 rounded-3xl border border-black/5 dark:border-white/5 shadow-sm">
+            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-white dark:bg-black/20 rounded-3xl border border-black/5 dark:border-white/5 shadow-sm">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-2xl bg-surface-highlight border border-transparent dark:bg-transparent dark:border-none focus:outline-none text-light placeholder-muted font-medium focus:ring-2 focus:ring-secondary/20"
+                className="flex-1 px-6 py-3 rounded-2xl bg-white/5 border border-transparent focus:outline-none text-light placeholder-muted font-medium focus:ring-2 focus:ring-footer-primary/20"
               />
-              <button className="px-8 py-3 rounded-2xl bg-secondary text-white font-bold hover:bg-accent transition-colors duration-300 shadow-lg shadow-secondary/20">
+              <button className="px-8 py-3 rounded-2xl bg-footer-primary text-white font-bold hover:bg-footer-secondary transition-colors duration-300 shadow-lg shadow-footer-primary/20">
                 Subscribe
               </button>
             </div>

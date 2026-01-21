@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 import Lottie from "react-lottie";
-import { Squiggle } from "../FunElements";
+import { SmoothUnderline } from "../FunElements";
 
 import resume from "../../assets/resume.json";
 import skills from "../../assets/skills.json";
@@ -134,10 +134,12 @@ export default function Service() {
       description:
         "Emotion-aware AI that analyzes facial cues and voice data to provide real-time feedback.",
       illustration: interview,
-      hoverBorder: "hover:border-accent",
-      hoverText: "group-hover:text-accent dark:group-hover:text-accent",
-      iconBg: "group-hover:bg-accent/10 dark:group-hover:bg-accent/20",
-      iconColor: "text-accent",
+      hoverBorder: "hover:border-services-secondary",
+      hoverText:
+        "group-hover:text-services-secondary dark:group-hover:text-services-secondary",
+      iconBg:
+        "group-hover:bg-services-secondary/10 dark:group-hover:bg-services-secondary/20",
+      iconColor: "text-services-secondary",
     },
     {
       id: "resume-gen",
@@ -145,10 +147,12 @@ export default function Service() {
       description:
         "AI-powered resume crafting that optimizes for ATS and highlights your impact.",
       illustration: resume,
-      hoverBorder: "hover:border-secondary",
-      hoverText: "group-hover:text-secondary dark:group-hover:text-secondary",
-      iconBg: "group-hover:bg-secondary/10 dark:group-hover:bg-secondary/20",
-      iconColor: "text-secondary",
+      hoverBorder: "hover:border-services-primary",
+      hoverText:
+        "group-hover:text-services-primary dark:group-hover:text-services-primary",
+      iconBg:
+        "group-hover:bg-services-primary/10 dark:group-hover:bg-services-primary/20",
+      iconColor: "text-services-primary",
     },
     {
       id: "skill-training",
@@ -156,10 +160,12 @@ export default function Service() {
       description:
         "Personalized roadmaps and curated resources to help you bridge the tech gap.",
       illustration: skills,
-      hoverBorder: "hover:border-warning",
-      hoverText: "group-hover:text-warning dark:group-hover:text-warning",
-      iconBg: "group-hover:bg-warning/10 dark:group-hover:bg-warning/20",
-      iconColor: "text-warning",
+      hoverBorder: "hover:border-services-accent",
+      hoverText:
+        "group-hover:text-services-accent dark:group-hover:text-services-accent",
+      iconBg:
+        "group-hover:bg-services-accent/10 dark:group-hover:bg-services-accent/20",
+      iconColor: "text-services-accent",
     },
   ];
 
@@ -170,14 +176,14 @@ export default function Service() {
       className="section-container bg-surface overflow-hidden"
     >
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-16 w-full max-w-6xl mx-auto">
-        <div className="inline-block px-4 py-2 rounded-2xl bg-accent text-white text-xs font-black uppercase tracking-widest transform rotate-2">
+        <div className="inline-block px-4 py-2 rounded-2xl bg-services-secondary text-white text-xs font-black uppercase tracking-widest transform rotate-2">
           Our Expertise
         </div>
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light">
           Immersive Learning <br />
-          <span className="relative inline-block text-secondary">
+          <span className="relative inline-block text-services-primary">
             Solutions
-            <Squiggle className="text-accent w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
+            <SmoothUnderline className="text-services-accent w-full" />
           </span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed font-medium mt-4">
@@ -201,7 +207,9 @@ export default function Service() {
       </div>
 
       {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-secondary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-services-primary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-10 right-10 size-[200px] md:size-[400px] bg-services-secondary/5 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 left-10 size-[200px] md:size-[400px] bg-services-accent/5 blur-[80px] rounded-full pointer-events-none" />
     </section>
   );
 }

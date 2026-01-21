@@ -1,7 +1,7 @@
 import Sidebar from "../../components/Sidebar";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { sections } from "./features";
-import { StarBurst, Squiggle } from "../../components/FunElements";
+import { StarBurst, SmoothUnderline } from "../../components/FunElements";
 
 export default function Features() {
   const { featureId } = useParams();
@@ -37,7 +37,7 @@ export default function Features() {
               </h1>
               <p className="text-secondary text-2xl font-display font-medium relative inline-block">
                 {current.tagline}
-                <Squiggle className="text-accent w-full -bottom-2 left-0 h-4" />
+                <SmoothUnderline className="text-accent w-full" />
               </p>
             </div>
 

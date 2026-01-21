@@ -1,7 +1,7 @@
 import Lottie from "react-lottie";
 import animationData from "../../assets/about.json";
 import { Link } from "react-router-dom";
-import { UnderlineDoodle } from "../FunElements";
+import { SmoothUnderline } from "../FunElements";
 
 export default function AboutUs() {
   const defaultOptions = {
@@ -18,8 +18,8 @@ export default function AboutUs() {
       className="section-container bg-surface relative overflow-hidden"
     >
       {/* Decorative BG */}
-      <div className="absolute top-20 right-0 w-48 h-48 md:w-96 md:h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-10 dark:mix-blend-normal" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 md:w-96 md:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-10 dark:mix-blend-normal" />
+      <div className="absolute top-20 right-0 w-48 h-48 md:w-96 md:h-96 bg-about-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-10 dark:mix-blend-normal" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 md:w-96 md:h-96 bg-about-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-10 dark:mix-blend-normal" />
 
       {/* MAIN CARD */}
       <div
@@ -28,15 +28,15 @@ export default function AboutUs() {
       >
         {/* LEFT SECTION */}
         <div className="flex-1 space-y-6 relative z-10 text-center lg:text-left">
-          <div className="inline-block px-4 py-2 rounded-2xl bg-secondary text-white text-xs font-black uppercase tracking-widest transform -rotate-2">
+          <div className="inline-block px-4 py-2 rounded-2xl bg-about-secondary text-white text-xs font-black uppercase tracking-widest transform -rotate-2">
             Our Story 📖
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-accent dark:text-light tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-about-primary dark:text-light tracking-tight">
             Who We <br />
-            <span className="relative inline-block text-secondary">
+            <span className="relative inline-block text-about-secondary">
               Are
-              <UnderlineDoodle className="text-accent w-full -bottom-2 left-0 h-4" />
+              <SmoothUnderline className="text-about-primary w-full" />
             </span>
           </h2>
 
@@ -47,7 +47,7 @@ export default function AboutUs() {
           </p>
 
           <Link to={"/features/about"}>
-            <button className="mt-4 px-10 py-4 rounded-2xl bg-accent text-white font-black text-lg hover:bg-secondary hover:scale-105 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none translate-y-0 active:translate-y-1">
+            <button className="mt-4 px-10 py-4 rounded-2xl bg-about-primary text-white font-black text-lg hover:bg-about-secondary hover:scale-105 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none translate-y-0 active:translate-y-1">
               Know More
             </button>
           </Link>
@@ -66,8 +66,8 @@ export default function AboutUs() {
       {/* MISSION + VISION */}
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Mission Card */}
-        <div className="bg-accent/5 dark:bg-accent/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-accent/10 dark:border-accent/20 hover:border-accent transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
-          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-300 rotate-3">
+        <div className="bg-about-primary/5 dark:bg-about-primary/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-about-primary/10 dark:border-about-primary/20 hover:border-about-primary transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
+          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-about-primary mb-6 group-hover:scale-110 transition-transform duration-300 rotate-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="size-10"
@@ -83,7 +83,7 @@ export default function AboutUs() {
               <path d="m8 8 8 8" />
             </svg>
           </div>
-          <h3 className="text-4xl font-display font-bold mb-4 text-accent dark:text-white">
+          <h3 className="text-4xl font-display font-bold mb-4 text-about-primary dark:text-white">
             Our Mission
           </h3>
           <p className="text-muted text-lg leading-relaxed font-medium">
@@ -94,8 +94,8 @@ export default function AboutUs() {
         </div>
 
         {/* Vision Card */}
-        <div className="bg-secondary/5 dark:bg-secondary/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-secondary/10 dark:border-secondary/20 hover:border-secondary transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
-          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform duration-300 -rotate-3">
+        <div className="bg-about-secondary/5 dark:bg-about-secondary/10 rounded-[2.5rem] p-6 md:p-10 border-2 border-about-secondary/10 dark:border-about-secondary/20 hover:border-about-secondary transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
+          <div className="size-20 rounded-3xl bg-white dark:bg-white/10 shadow-sm flex items-center justify-center text-about-secondary mb-6 group-hover:scale-110 transition-transform duration-300 -rotate-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="size-10"
@@ -111,7 +111,7 @@ export default function AboutUs() {
               <line x1="12" y1="22" x2="12" y2="12" />
             </svg>
           </div>
-          <h3 className="text-4xl font-display font-bold mb-4 text-secondary dark:text-white">
+          <h3 className="text-4xl font-display font-bold mb-4 text-about-secondary dark:text-white">
             Our Vision
           </h3>
           <p className="text-muted text-lg leading-relaxed font-medium">

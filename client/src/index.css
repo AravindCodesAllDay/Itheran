@@ -21,6 +21,29 @@
   --color-info: var(--info);
   --color-success: var(--success);
 
+  /* Component-Specific Colors */
+  --color-hero-primary: var(--hero-primary);
+  --color-hero-secondary: var(--hero-secondary);
+  --color-hero-accent: var(--hero-accent);
+
+  --color-services-primary: var(--services-primary);
+  --color-services-secondary: var(--services-secondary);
+  --color-services-accent: var(--services-accent);
+
+  --color-roadmap-primary: var(--roadmap-primary);
+  --color-roadmap-secondary: var(--roadmap-secondary);
+  --color-roadmap-accent: var(--roadmap-accent);
+  --color-roadmap-info: var(--roadmap-info);
+
+  --color-about-primary: var(--about-primary);
+  --color-about-secondary: var(--about-secondary);
+
+  --color-contact-primary: var(--contact-primary);
+  --color-contact-secondary: var(--contact-secondary);
+
+  --color-footer-primary: var(--footer-primary);
+  --color-footer-secondary: var(--footer-secondary);
+
   --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 0 20px rgba(113, 75, 103, 0.3);
 
@@ -38,7 +61,7 @@
 
 @layer base {
   :root {
-    /* Odoo-inspired Light Mode */
+    /* Odoo-inspired Light Mode - Base Colors */
     --primary: #ffffff;
     --secondary: #00878b; /* Vibrant Teal */
     --accent: #7c5eb4; /* Deep Purple */
@@ -53,10 +76,38 @@
     --warning: #f59e0b; /* Amber 500 */
     --info: #3b82f6; /* Blue 500 */
     --success: #22c55e; /* Green 500 */
+
+    /* Hero Section - Purple & Cyan theme */
+    --hero-primary: #8b5cf6; /* Vibrant Purple */
+    --hero-secondary: #06b6d4; /* Cyan */
+    --hero-accent: #f59e0b; /* Amber */
+
+    /* Services Section - Teal, Purple, Orange theme */
+    --services-primary: #00878b; /* Teal */
+    --services-secondary: #7c5eb4; /* Purple */
+    --services-accent: #f59e0b; /* Orange/Amber */
+
+    /* Roadmap Section - Multi-color theme */
+    --roadmap-primary: #7c5eb4; /* Purple/Accent */
+    --roadmap-secondary: #00878b; /* Teal */
+    --roadmap-accent: #f59e0b; /* Amber/Warning */
+    --roadmap-info: #3b82f6; /* Blue */
+
+    /* About Section - Green & Purple theme */
+    --about-primary: #7c5eb4; /* Purple */
+    --about-secondary: #00878b; /* Teal */
+
+    /* Contact Section - Teal & Accent theme */
+    --contact-primary: #00878b; /* Teal */
+    --contact-secondary: #7c5eb4; /* Purple */
+
+    /* Footer Section - Teal theme */
+    --footer-primary: #00878b; /* Teal */
+    --footer-secondary: #7c5eb4; /* Purple */
   }
 
   .dark {
-    /* Odoo-inspired Dark Mode */
+    /* Odoo-inspired Dark Mode - Base Colors */
     --primary: #0f172a; /* Slate 900 */
     --secondary: #22d3ee; /* Cyan 400 - Neon pop */
     --accent: #a78bfa; /* Violet 400 */
@@ -71,6 +122,34 @@
     --warning: #fbbf24; /* Amber 400 */
     --info: #60a5fa; /* Blue 400 */
     --success: #4ade80; /* Green 400 */
+
+    /* Hero Section - Bright Purple & Cyan for dark mode */
+    --hero-primary: #a78bfa; /* Violet 400 */
+    --hero-secondary: #22d3ee; /* Cyan 400 */
+    --hero-accent: #fbbf24; /* Amber 400 */
+
+    /* Services Section - Bright colors for dark mode */
+    --services-primary: #22d3ee; /* Cyan 400 */
+    --services-secondary: #a78bfa; /* Violet 400 */
+    --services-accent: #fbbf24; /* Amber 400 */
+
+    /* Roadmap Section - Multi-color bright theme */
+    --roadmap-primary: #a78bfa; /* Violet 400 */
+    --roadmap-secondary: #22d3ee; /* Cyan 400 */
+    --roadmap-accent: #fbbf24; /* Amber 400 */
+    --roadmap-info: #60a5fa; /* Blue 400 */
+
+    /* About Section - Bright theme */
+    --about-primary: #a78bfa; /* Violet 400 */
+    --about-secondary: #22d3ee; /* Cyan 400 */
+
+    /* Contact Section - Bright theme */
+    --contact-primary: #22d3ee; /* Cyan 400 */
+    --contact-secondary: #a78bfa; /* Violet 400 */
+
+    /* Footer Section - Bright theme */
+    --footer-primary: #22d3ee; /* Cyan 400 */
+    --footer-secondary: #a78bfa; /* Violet 400 */
   }
 
   html {
@@ -143,22 +222,36 @@
   animation: float 4s ease-in-out infinite;
 }
 
-@keyframes wiggle {
+@keyframes pulse-glow {
   0%,
   100% {
-    transform: rotate(-3deg);
+    opacity: 1;
   }
   50% {
-    transform: rotate(3deg);
+    opacity: 0.7;
   }
 }
 
-.animate-wiggle {
-  animation: wiggle 2s ease-in-out infinite;
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.hover\:animate-wiggle:hover {
-  animation: wiggle 0.5s ease-in-out infinite;
+/* Smooth underline utility */
+.smooth-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.smooth-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: linear-gradient(90deg, currentColor 0%, currentColor 100%);
+  border-radius: 9999px;
+  opacity: 0.6;
 }
 
 @keyframes blob {

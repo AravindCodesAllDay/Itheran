@@ -20,19 +20,19 @@ export default function SidebarNavItem({
       onClick={() => onSelect(id)}
       className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group whitespace-nowrap w-full text-left ${
         isActive
-          ? "bg-secondary text-white shadow-lg scale-105"
-          : "hover:bg-surface text-muted hover:text-light"
+          ? "bg-secondary text-white shadow-lg scale-[1.02]"
+          : "hover:bg-surface-highlight dark:hover:bg-white/10 text-muted hover:text-light"
       }`}
     >
-      <div>
+      <div className="flex-shrink-0">
         <Lottie
-          options={{ animationData: icon, autoplay: false }}
+          options={{ animationData: icon, autoplay: false, loop: false }}
           isPaused={true}
-          height="30px"
-          width="30px"
+          height={30}
+          width={30}
         />
       </div>
-      <span className="font-semibold tracking-wide">{label}</span>
+      <span className="font-semibold tracking-wide text-sm">{label}</span>
     </button>
   );
 }

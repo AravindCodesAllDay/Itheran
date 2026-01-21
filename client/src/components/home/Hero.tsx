@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import robot from "../../assets/robot2.json";
-import { ArrowDoodle, StarBurst, Squiggle } from "../FunElements";
+import {
+  ArrowDoodle,
+  StarBurst,
+  SmoothUnderline,
+  CircleDoodle,
+} from "../FunElements";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -29,19 +34,24 @@ export default function Hero() {
       id="hero"
       className="relative flex justify-center items-center min-h-dvh w-full overflow-hidden bg-primary text-light"
     >
-      {/* Fun Background Blobs */}
+      {/* Fun Background Blobs - Hero Colors */}
       <div
-        className="absolute top-0 -left-20 size-60 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20 dark:mix-blend-normal"
+        className="absolute top-0 -left-20 size-60 bg-hero-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.5}px)` }}
       />
       <div
-        className="absolute top-20 -right-24 size-74 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
+        className="absolute top-20 -right-24 size-96 bg-hero-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.8}px)` }}
       />
       <div
-        className="absolute -bottom-32 left-24 size-74 bg-warning rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
+        className="absolute -bottom-32 left-24 size-80 bg-hero-accent rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       />
+      <div
+        className="absolute top-1/2 right-1/4 size-72 bg-hero-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000 dark:opacity-10 dark:mix-blend-normal"
+        style={{ transform: `translateY(${scrollY * 0.6}px)` }}
+      />
+      <CircleDoodle className="text-hero-accent top-20 left-1/4 w-32 h-32 opacity-40" />
 
       {/* Main Content */}
       <div
@@ -49,7 +59,7 @@ export default function Hero() {
         style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       >
         {/* Badge */}
-        <div className="inline-block px-6 py-2 rounded-full border-2 border-secondary bg-surface text-secondary text-sm font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_var(--color-secondary)] hover:translate-y-1 hover:shadow-none transition-all cursor-default animate-bounce relative z-10">
+        <div className="inline-block px-6 py-2 rounded-full border-2 border-hero-secondary bg-surface text-hero-secondary text-sm font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_var(--color-hero-secondary)] hover:translate-y-1 hover:shadow-none transition-all cursor-default animate-bounce relative z-10">
           🚀 Next Gen Skill Development
         </div>
 
@@ -58,16 +68,16 @@ export default function Hero() {
           <StarBurst className="text-yellow-400 -top-8 -right-8 w-16 h-16 animate-spin-slow" />
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display leading-tight md:leading-none text-light drop-shadow-sm">
             Avatar-Based <br />
-            <span className="relative inline-block text-accent transform -rotate-2 hover:rotate-3 transition-transform duration-300">
+            <span className="relative inline-block text-hero-primary transform -rotate-2 hover:rotate-3 transition-transform duration-300">
               Skill Training
-              <Squiggle className="text-secondary w-full -bottom-2 md:-bottom-4 left-0 h-4 md:h-6" />
+              <SmoothUnderline className="text-hero-secondary w-full" />
             </span>
           </h1>
         </div>
 
         <p className="text-lg md:text-3xl font-medium text-light max-w-3xl mx-auto leading-relaxed transform rotate-1">
           Simulate interviews, master soft skills, and grow with{" "}
-          <span className="font-bold text-accent decoration-wavy underline decoration-secondary">
+          <span className="font-bold text-hero-primary px-2 py-1 bg-hero-primary/10 rounded-lg">
             AI feedback
           </span>{" "}
           in a 3D world!
@@ -75,28 +85,28 @@ export default function Hero() {
 
         {/* Feature Cards Loop */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-8 relative">
-          <ArrowDoodle className="text-secondary h-24 w-24 absolute -left-12 -top-10 transform -rotate-45 hidden lg:block" />
+          <ArrowDoodle className="text-hero-secondary h-24 w-24 absolute -left-12 -top-10 transform -rotate-45 hidden lg:block" />
 
           {[
             {
               color:
-                "bg-accent/10 text-accent dark:bg-accent/20 dark:text-white dark:border-white/5",
+                "bg-hero-primary/10 text-hero-primary dark:bg-hero-primary/20 dark:text-white dark:border-white/5",
               text: "3D Avatar Interaction",
             },
             {
               color:
-                "bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-white dark:border-white/5",
+                "bg-hero-secondary/10 text-hero-secondary dark:bg-hero-secondary/20 dark:text-white dark:border-white/5",
               text: "No Credit Card Needed",
             },
             {
               color:
-                "bg-warning/10 text-warning dark:bg-warning/20 dark:text-white dark:border-white/5",
+                "bg-hero-accent/10 text-hero-accent dark:bg-hero-accent/20 dark:text-white dark:border-white/5",
               text: "AI-Driven Feedback",
             },
           ].map((item, i) => (
             <div
               key={i}
-              className={`px-4 py-2 md:px-8 md:py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer hover:animate-wiggle border-2 border-transparent`}
+              className={`px-4 py-2 md:px-8 md:py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer border-2 border-transparent hover:scale-105`}
             >
               {item.text}
             </div>

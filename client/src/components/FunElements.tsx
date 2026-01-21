@@ -17,22 +17,20 @@ export const ArrowDoodle = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const Squiggle = ({ className = "" }: { className?: string }) => (
-  <svg
+// Smooth gradient underline - replaces Squiggle
+export const SmoothUnderline = ({ className = "" }: { className?: string }) => (
+  <div
     className={`absolute pointer-events-none ${className}`}
-    width="120"
-    height="30"
-    viewBox="0 0 120 30"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M5 15C20 5 30 25 45 15C60 5 70 25 85 15C100 5 110 25 115 15"
-      stroke="currentColor"
-      strokeWidth="4"
-      strokeLinecap="round"
-    />
-  </svg>
+    style={{
+      bottom: "-0.5rem",
+      left: 0,
+      width: "100%",
+      height: "0.375rem",
+      background: "currentColor",
+      borderRadius: "9999px",
+      opacity: 0.6,
+    }}
+  />
 );
 
 export const StarBurst = ({ className = "" }: { className?: string }) => (
@@ -48,21 +46,66 @@ export const StarBurst = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const UnderlineDoodle = ({ className = "" }: { className?: string }) => (
+// New Odoo-style circle doodle
+export const CircleDoodle = ({ className = "" }: { className?: string }) => (
   <svg
     className={`absolute pointer-events-none ${className}`}
-    width="200"
-    height="20"
-    viewBox="0 0 200 20"
+    width="120"
+    height="120"
+    viewBox="0 0 120 120"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="none"
   >
-    <path
-      d="M5 10Q50 15 100 5T195 10"
+    <circle
+      cx="60"
+      cy="60"
+      r="50"
       stroke="currentColor"
-      strokeWidth="4"
-      strokeLinecap="round"
+      strokeWidth="3"
+      strokeDasharray="8 8"
+      opacity="0.3"
     />
   </svg>
 );
+
+// Reusable blur shape component
+export const BlurShape = ({
+  className = "",
+  color = "secondary",
+  size = "md",
+}: {
+  className?: string;
+  color?: string;
+  size?: "sm" | "md" | "lg" | "xl";
+}) => {
+  const sizeClasses = {
+    sm: "size-48",
+    md: "size-72",
+    lg: "size-96",
+    xl: "size-[500px]",
+  };
+
+  return (
+    <div
+      className={`absolute rounded-full blur-[100px] pointer-events-none opacity-20 dark:opacity-10 ${sizeClasses[size]} bg-${color}/30 ${className}`}
+    />
+  );
+};
+
+// Wavy shape for one-side rounded designs
+export const WavyShape = ({ className = "" }: { className?: string }) => (
+  <svg
+    className={`absolute pointer-events-none ${className}`}
+    width="200"
+    height="200"
+    viewBox="0 0 200 200"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0 Q50 50 100 0 T200 0 L200 200 L0 200 Z" opacity="0.1" />
+  </svg>
+);
+
+// Keep for backward compatibility but mark as deprecated
+export const UnderlineDoodle = SmoothUnderline;
+export const Squiggle = SmoothUnderline;

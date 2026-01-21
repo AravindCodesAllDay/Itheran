@@ -17,28 +17,28 @@ export default function RoadMap() {
       title: "Skill Mapping",
       desc: "We assess and recommend the best learning paths tailored just for you.",
       color:
-        "bg-accent/5 border-accent/20 text-accent dark:bg-accent/10 dark:border-accent/30 dark:text-accent",
+        "bg-roadmap-primary/5 border-roadmap-primary/20 text-roadmap-primary dark:bg-roadmap-primary/10 dark:border-roadmap-primary/30 dark:text-roadmap-primary",
     },
     {
       step: "02",
       title: "Interactive Training",
       desc: "Practice with real-time feedback from AI avatars in a risk-free environment.",
       color:
-        "bg-secondary/5 border-secondary/20 text-secondary dark:bg-secondary/10 dark:border-secondary/30 dark:text-secondary",
+        "bg-roadmap-secondary/5 border-roadmap-secondary/20 text-roadmap-secondary dark:bg-roadmap-secondary/10 dark:border-roadmap-secondary/30 dark:text-roadmap-secondary",
     },
     {
       step: "03",
       title: "Analyse",
       desc: "Get Granular data on every interaction to evaluate your soft skills.",
       color:
-        "bg-warning/5 border-warning/20 text-warning dark:bg-warning/10 dark:border-warning/30 dark:text-warning",
+        "bg-roadmap-accent/5 border-roadmap-accent/20 text-roadmap-accent dark:bg-roadmap-accent/10 dark:border-roadmap-accent/30 dark:text-roadmap-accent",
     },
     {
       step: "04",
       title: "Track & Improve",
       desc: "Monitor your progress over time and sharpen your professional expertise.",
       color:
-        "bg-info/5 border-info/20 text-info dark:bg-info/10 dark:border-info/30 dark:text-info",
+        "bg-roadmap-info/5 border-roadmap-info/20 text-roadmap-info dark:bg-roadmap-info/10 dark:border-roadmap-info/30 dark:text-roadmap-info",
     },
   ];
 
@@ -50,13 +50,13 @@ export default function RoadMap() {
     <section id="roadmap" className="section-container bg-surface">
       {/* HEADER */}
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-16 w-full max-w-6xl mx-auto">
-        <div className="inline-block px-4 py-2 rounded-2xl bg-accent text-white text-xs font-black uppercase tracking-widest transform -rotate-1">
+        <div className="inline-block px-4 py-2 rounded-2xl bg-roadmap-primary text-white text-xs font-black uppercase tracking-widest transform -rotate-1">
           The Process
         </div>
         <div className="relative">
           <StarBurst className="text-yellow-400 absolute -top-10 -right-10 w-16 h-16 animate-spin-slow" />
           <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light z-10 relative">
-            How We <span className="text-secondary">Work</span>
+            How We <span className="text-roadmap-secondary">Work</span>
           </h3>
         </div>
         <p className="text-muted max-w-2xl text-lg leading-relaxed font-medium">
@@ -85,7 +85,7 @@ export default function RoadMap() {
               style={{
                 borderColor: isOpen ? "" : undefined,
                 color: isOpen ? "" : undefined,
-              }} // Start with current or custom
+              }}
             >
               {/* ✅ CONTENT */}
               <div className="relative z-10 w-full">

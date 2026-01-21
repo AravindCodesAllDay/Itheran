@@ -81,22 +81,24 @@ export default function Sidebar({ activeId, onSelect }: SidebarProps) {
       />
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-64 h-[calc(100vh-80px)] sticky top-28 z-40 flex-col border-r border-black/5 dark:border-white/5 pr-4 bg-surface/50 dark:bg-white/5 backdrop-blur-sm rounded-r-[2rem]">
-        <nav className="flex flex-col space-y-2">
-          <SidebarNavList
-            items={items}
-            activeId={activeId}
-            onSelect={onSelect}
-          />
-        </nav>
+      <aside className="hidden lg:flex w-64 min-h-[calc(100vh-200px)] sticky top-28 z-40 flex-col pr-4">
+        <div className="bg-surface/80 dark:bg-white/5 backdrop-blur-sm rounded-[2rem] border border-black/5 dark:border-white/5 p-4">
+          <nav className="flex flex-col space-y-2">
+            <SidebarNavList
+              items={items}
+              activeId={activeId}
+              onSelect={onSelect}
+            />
+          </nav>
 
-        <div className="mt-8 p-4 rounded-2xl bg-surface dark:bg-white/5 border border-white/5">
-          <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">
-            Need Help?
-          </h4>
-          <p className="text-xs text-muted leading-relaxed">
-            Our AI agents are here to guide you through your career journey.
-          </p>
+          <div className="mt-8 p-4 rounded-2xl bg-surface dark:bg-white/5 border border-black/5 dark:border-white/5">
+            <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">
+              Need Help?
+            </h4>
+            <p className="text-xs text-muted leading-relaxed">
+              Our AI agents are here to guide you through your career journey.
+            </p>
+          </div>
         </div>
       </aside>
     </>
