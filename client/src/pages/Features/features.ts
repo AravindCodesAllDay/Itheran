@@ -20,6 +20,7 @@ export const sections = {
       },
     ],
     image: "🏢",
+    colorTheme: "theme-2",
   },
   "ai-interview": {
     title: "AI Interactive Interview",
@@ -41,6 +42,7 @@ export const sections = {
       },
     ],
     image: "🤖",
+    colorTheme: "theme-1",
   },
   "skill-training": {
     title: "Skill Training Ecosystem",
@@ -62,6 +64,7 @@ export const sections = {
       },
     ],
     image: "🧠",
+    colorTheme: "theme-3",
   },
   "resume-gen": {
     title: "Resume Generation",
@@ -83,5 +86,6 @@ export const sections = {
       },
     ],
     image: "📄",
+    colorTheme: "theme-4",
   },
 };

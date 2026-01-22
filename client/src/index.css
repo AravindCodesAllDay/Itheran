@@ -21,28 +21,11 @@
   --color-info: var(--info);
   --color-success: var(--success);
 
-  /* Component-Specific Colors */
-  --color-hero-primary: var(--hero-primary);
-  --color-hero-secondary: var(--hero-secondary);
-  --color-hero-accent: var(--hero-accent);
-
-  --color-services-primary: var(--services-primary);
-  --color-services-secondary: var(--services-secondary);
-  --color-services-accent: var(--services-accent);
-
-  --color-roadmap-primary: var(--roadmap-primary);
-  --color-roadmap-secondary: var(--roadmap-secondary);
-  --color-roadmap-accent: var(--roadmap-accent);
-  --color-roadmap-info: var(--roadmap-info);
-
-  --color-about-primary: var(--about-primary);
-  --color-about-secondary: var(--about-secondary);
-
-  --color-contact-primary: var(--contact-primary);
-  --color-contact-secondary: var(--contact-secondary);
-
-  --color-footer-primary: var(--footer-primary);
-  --color-footer-secondary: var(--footer-secondary);
+  /* Shared Theme Colors */
+  --color-theme-1: var(--theme-1);
+  --color-theme-2: var(--theme-2);
+  --color-theme-3: var(--theme-3);
+  --color-theme-4: var(--theme-4);
 
   --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 0 20px rgba(113, 75, 103, 0.3);
@@ -77,79 +60,35 @@
     --info: #3b82f6; /* Blue 500 */
     --success: #22c55e; /* Green 500 */
 
-    /* Hero Section - Purple & Cyan theme */
-    --hero-primary: #8b5cf6; /* Vibrant Purple */
-    --hero-secondary: #06b6d4; /* Cyan */
-    --hero-accent: #f59e0b; /* Amber */
-
-    /* Services Section - Teal, Purple, Orange theme */
-    --services-primary: #00878b; /* Teal */
-    --services-secondary: #7c5eb4; /* Purple */
-    --services-accent: #f59e0b; /* Orange/Amber */
-
-    /* Roadmap Section - Multi-color theme */
-    --roadmap-primary: #7c5eb4; /* Purple/Accent */
-    --roadmap-secondary: #00878b; /* Teal */
-    --roadmap-accent: #f59e0b; /* Amber/Warning */
-    --roadmap-info: #3b82f6; /* Blue */
-
-    /* About Section - Green & Purple theme */
-    --about-primary: #7c5eb4; /* Purple */
-    --about-secondary: #00878b; /* Teal */
-
-    /* Contact Section - Teal & Accent theme */
-    --contact-primary: #00878b; /* Teal */
-    --contact-secondary: #7c5eb4; /* Purple */
-
-    /* Footer Section - Teal theme */
-    --footer-primary: #00878b; /* Teal */
-    --footer-secondary: #7c5eb4; /* Purple */
+    /* Universal Theme Palette */
+    --theme-1: #00878b; /* Teal */
+    --theme-2: #7c5eb4; /* Purple */
+    --theme-3: #f59e0b; /* Orange/Amber */
+    --theme-4: #3b82f6; /* Blue */
   }
 
   .dark {
-    /* Odoo-inspired Dark Mode - Base Colors */
-    --primary: #0f172a; /* Slate 900 */
+    /* Harmonized High-Contrast Dark Mode */
+    --primary: #020617; /* Slate 950 - Much darker for depth */
     --secondary: #22d3ee; /* Cyan 400 - Neon pop */
     --accent: #a78bfa; /* Violet 400 */
-    --surface: #1e293b; /* Slate 800 */
-    --surface-highlight: #334155; /* Slate 700 */
-    --glass: rgba(15, 23, 42, 0.8);
+    --surface: #0f172a; /* Slate 900 - Darker surface */
+    --surface-highlight: #1e293b; /* Slate 800 */
+    --glass: rgba(2, 6, 23, 0.8);
     --light: #f1f5f9; /* Slate 100 */
     --muted: #94a3b8; /* Slate 400 */
-    --light-gray: #334155;
-    --border: #334155;
+    --light-gray: #1e293b;
+    --border: #1e293b;
 
     --warning: #fbbf24; /* Amber 400 */
     --info: #60a5fa; /* Blue 400 */
     --success: #4ade80; /* Green 400 */
 
-    /* Hero Section - Bright Purple & Cyan for dark mode */
-    --hero-primary: #a78bfa; /* Violet 400 */
-    --hero-secondary: #22d3ee; /* Cyan 400 */
-    --hero-accent: #fbbf24; /* Amber 400 */
-
-    /* Services Section - Bright colors for dark mode */
-    --services-primary: #22d3ee; /* Cyan 400 */
-    --services-secondary: #a78bfa; /* Violet 400 */
-    --services-accent: #fbbf24; /* Amber 400 */
-
-    /* Roadmap Section - Multi-color bright theme */
-    --roadmap-primary: #a78bfa; /* Violet 400 */
-    --roadmap-secondary: #22d3ee; /* Cyan 400 */
-    --roadmap-accent: #fbbf24; /* Amber 400 */
-    --roadmap-info: #60a5fa; /* Blue 400 */
-
-    /* About Section - Bright theme */
-    --about-primary: #a78bfa; /* Violet 400 */
-    --about-secondary: #22d3ee; /* Cyan 400 */
-
-    /* Contact Section - Bright theme */
-    --contact-primary: #22d3ee; /* Cyan 400 */
-    --contact-secondary: #a78bfa; /* Violet 400 */
-
-    /* Footer Section - Bright theme */
-    --footer-primary: #22d3ee; /* Cyan 400 */
-    --footer-secondary: #a78bfa; /* Violet 400 */
+    /* Universal Theme Palette - Responsive labels for dark mode */
+    --theme-1: #22d3ee; /* Cyan 400 */
+    --theme-2: #a78bfa; /* Violet 400 */
+    --theme-3: #fbbf24; /* Amber 400 */
+    --theme-4: #60a5fa; /* Blue 400 */
   }
 
   html {
@@ -189,6 +128,11 @@
 
   .section-container {
     @apply relative px-6 lg:px-32 py-24;
+  }
+
+  /* Standardized Input - High Contrast */
+  .input-odoo {
+    @apply w-full px-5 py-4 rounded-2xl bg-surface-highlight dark:bg-black/40 border border-transparent focus:border-theme-1/50 focus:bg-white dark:focus:bg-black/60 outline-none transition-all duration-300 text-light placeholder-muted font-medium;
   }
 }
 

@@ -19,6 +19,21 @@ export default function Hero() {
     },
   };
 
+  const pitches = [
+    {
+      color: "theme-3",
+      text: "3D Avatar Interaction",
+    },
+    {
+      color: "theme-2",
+      text: "No Credit Card Needed",
+    },
+    {
+      color: "theme-1",
+      text: "AI-Driven Feedback",
+    },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth >= 768) {
@@ -36,22 +51,22 @@ export default function Hero() {
     >
       {/* Fun Background Blobs - Hero Colors */}
       <div
-        className="absolute top-0 -left-20 size-60 bg-hero-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20 dark:mix-blend-normal"
+        className="absolute top-0 -left-20 size-60 bg-theme-2 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.5}px)` }}
       />
       <div
-        className="absolute top-20 -right-24 size-96 bg-hero-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20 dark:mix-blend-normal"
+        className="absolute top-20 -right-24 size-96 bg-theme-1 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.8}px)` }}
       />
       <div
-        className="absolute -bottom-32 left-24 size-80 bg-hero-accent rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20 dark:mix-blend-normal"
+        className="absolute -bottom-32 left-24 size-80 bg-theme-3 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-4000 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       />
       <div
-        className="absolute top-1/2 right-1/4 size-72 bg-hero-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000 dark:opacity-10 dark:mix-blend-normal"
+        className="absolute top-1/2 right-1/4 size-72 bg-theme-2 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000 dark:mix-blend-normal"
         style={{ transform: `translateY(${scrollY * 0.6}px)` }}
       />
-      <CircleDoodle className="text-hero-accent top-20 left-1/4 w-32 h-32 opacity-40" />
+      <CircleDoodle className="text-theme-3 top-20 left-1/4 w-32 h-32 opacity-60" />
 
       {/* Main Content */}
       <div
@@ -59,7 +74,7 @@ export default function Hero() {
         style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       >
         {/* Badge */}
-        <div className="inline-block px-6 py-2 rounded-full border-2 border-hero-secondary bg-surface text-hero-secondary text-sm font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_var(--color-hero-secondary)] hover:translate-y-1 hover:shadow-none transition-all cursor-default animate-bounce relative z-10">
+        <div className="inline-block px-6 py-2 rounded-full border-2 border-theme-1 bg-surface dark:bg-black/40 text-theme-1 text-sm font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_var(--color-theme-1)] hover:translate-y-1 hover:shadow-none transition-all cursor-default animate-bounce relative z-10">
           🚀 Next Gen Skill Development
         </div>
 
@@ -68,16 +83,16 @@ export default function Hero() {
           <StarBurst className="text-yellow-400 -top-8 -right-8 w-16 h-16 animate-spin-slow" />
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display leading-tight md:leading-none text-light drop-shadow-sm">
             Avatar-Based <br />
-            <span className="relative inline-block text-hero-primary transform -rotate-2 hover:rotate-3 transition-transform duration-300">
+            <span className="relative inline-block text-theme-2 transform -rotate-2 hover:rotate-3 transition-transform duration-300">
               Skill Training
-              <SmoothUnderline className="text-hero-secondary w-full" />
+              <SmoothUnderline className="text-theme-1 w-full" />
             </span>
           </h1>
         </div>
 
         <p className="text-lg md:text-3xl font-medium text-light max-w-3xl mx-auto leading-relaxed transform rotate-1">
           Simulate interviews, master soft skills, and grow with{" "}
-          <span className="font-bold text-hero-primary px-2 py-1 bg-hero-primary/10 rounded-lg">
+          <span className="font-bold text-theme-2 px-2 py-1 bg-theme-2/10 rounded-lg">
             AI feedback
           </span>{" "}
           in a 3D world!
@@ -87,26 +102,10 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-8 relative">
           <ArrowDoodle className="text-hero-secondary h-24 w-24 absolute -left-12 -top-10 transform -rotate-45 hidden lg:block" />
 
-          {[
-            {
-              color:
-                "bg-hero-primary/10 text-hero-primary dark:bg-hero-primary/20 dark:text-white dark:border-white/5",
-              text: "3D Avatar Interaction",
-            },
-            {
-              color:
-                "bg-hero-secondary/10 text-hero-secondary dark:bg-hero-secondary/20 dark:text-white dark:border-white/5",
-              text: "No Credit Card Needed",
-            },
-            {
-              color:
-                "bg-hero-accent/10 text-hero-accent dark:bg-hero-accent/20 dark:text-white dark:border-white/5",
-              text: "AI-Driven Feedback",
-            },
-          ].map((item, i) => (
+          {pitches.map((item, i) => (
             <div
               key={i}
-              className={`px-4 py-2 md:px-8 md:py-4 rounded-3xl ${item.color} font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer border-2 border-transparent hover:scale-105`}
+              className={`px-4 py-2 md:px-8 md:py-4 rounded-3xl bg-${item.color}/20 text-${item.color} border-${item.color}  font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-0.5 transition-all duration-200 cursor-pointer border-2 border-transparent hover:scale-105`}
             >
               {item.text}
             </div>
@@ -123,7 +122,7 @@ export default function Hero() {
 
       {/* Lottie Robot */}
       <div
-        className="absolute h-3/5 md:h-[90%] md:top-10 z-0 pointer-events-none opacity-80 lg:opacity-60"
+        className="absolute h-3/5 md:h-[90%] md:top-10 z-0 pointer-events-none opacity-80 dark:opacity-40 lg:opacity-60 dark:lg:opacity-40"
         style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       >
         <Lottie options={defaultOptions} />

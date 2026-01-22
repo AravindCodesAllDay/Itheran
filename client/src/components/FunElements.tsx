@@ -19,7 +19,7 @@ export const ArrowDoodle = ({ className = "" }: { className?: string }) => (
 
 // Smooth gradient underline - replaces Squiggle
 export const SmoothUnderline = ({ className = "" }: { className?: string }) => (
-  <div
+  <span
     className={`absolute pointer-events-none ${className}`}
     style={{
       bottom: "-0.5rem",
@@ -86,7 +86,7 @@ export const BlurShape = ({
   };
 
   return (
-    <div
+    <span
       className={`absolute rounded-full blur-[100px] pointer-events-none opacity-20 dark:opacity-10 ${sizeClasses[size]} bg-${color}/30 ${className}`}
     />
   );

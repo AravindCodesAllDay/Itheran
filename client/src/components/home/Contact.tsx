@@ -44,14 +44,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-container bg-surface relative z-10 rounded-t-[3rem]"
+      className="section-container bg-surface relative rounded-b-[3rem] z-10"
     >
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-20 w-full max-w-6xl mx-auto">
-        <h2 className="inline-block px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-[0.2em]">
+        <h2 className="inline-block px-4 py-1.5 rounded-full border border-theme-1/30 bg-theme-1/10 text-theme-1 text-xs font-bold uppercase tracking-[0.2em]">
           Get In Touch
         </h2>
         <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light">
-          Let's Start a <span className="text-secondary">Conversation</span>
+          Let's Start a <span className="text-theme-1">Conversation</span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed">
           Have questions or ready to transform your team's skills? Reach out
@@ -71,7 +71,7 @@ export default function Contact() {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-contact-primary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light placeholder-muted font-medium"
+                className="input-odoo"
               />
             </div>
             <div>
@@ -82,7 +82,7 @@ export default function Contact() {
                 type="email"
                 required
                 placeholder="john@example.com"
-                className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-secondary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light placeholder-muted font-medium"
+                className="input-odoo focus:border-theme-2/50"
               />
             </div>
           </div>
@@ -95,13 +95,13 @@ export default function Contact() {
               required
               rows={4}
               placeholder="Tell us about your needs..."
-              className="w-full px-5 py-4 rounded-2xl bg-surface-highlight/50 dark:bg-white/5 border border-transparent focus:border-contact-primary/50 focus:bg-white dark:focus:bg-white/10 outline-none transition-all duration-300 text-light resize-none placeholder-muted font-medium"
+              className="input-odoo resize-none focus:border-theme-3/50"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-5 rounded-2xl bg-contact-primary text-white font-bold text-lg hover:bg-contact-secondary hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-contact-primary/20 hover:shadow-contact-secondary/30"
+            className="w-full py-5 rounded-2xl bg-theme-1 text-white font-bold text-lg hover:bg-theme-2 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-theme-1/20 hover:shadow-theme-2/30"
           >
             Send Message
           </button>
@@ -112,7 +112,7 @@ export default function Contact() {
           <div className="space-y-6">
             <h4 className="text-3xl font-bold tracking-tight">
               Connect With Us <br />
-              <span className="text-contact-primary">Anywhere, Anytime.</span>
+              <span className="text-theme-2">Anywhere, Anytime.</span>
             </h4>
             <p className="text-muted text-lg leading-relaxed">
               Our team is dedicated to providing the best AI-driven training
@@ -125,9 +125,15 @@ export default function Contact() {
             {contactDetails.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-6 group text-left w-full p-4 rounded-3xl hover:bg-white dark:hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-black/5 dark:hover:border-white/5 hover:shadow-sm"
+                className="flex items-center gap-6 group text-left w-full p-4 rounded-3xl hover:bg-white dark:hover:bg-black/40 transition-all duration-300 border border-transparent hover:border-black/5 dark:hover:border-white/5 hover:shadow-sm"
               >
-                <div className="size-16 rounded-2xl bg-contact-primary/10 flex items-center justify-center text-contact-primary group-hover:bg-contact-primary group-hover:text-white transition-all duration-300 shadow-inner">
+                <div
+                  className={`size-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-inner ${
+                    index === 0
+                      ? "bg-theme-1/10 text-theme-1 group-hover:bg-theme-1 group-hover:text-white"
+                      : "bg-theme-2/10 text-theme-2 group-hover:bg-theme-2 group-hover:text-white"
+                  }`}
+                >
                   {item.icon}
                 </div>
                 <ClickToCopy

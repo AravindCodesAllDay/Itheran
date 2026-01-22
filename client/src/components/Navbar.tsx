@@ -41,8 +41,19 @@ export default function Navbar() {
       lastScrollY = currentY;
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (isMenuOpen && !target.closest("nav") && !target.closest("button")) {
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScrollDir, { passive: true });
-    return () => window.removeEventListener("scroll", handleScrollDir);
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScrollDir);
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [isMenuOpen]);
 
   return (

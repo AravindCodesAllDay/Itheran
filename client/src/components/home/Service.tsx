@@ -55,14 +55,14 @@ const ServiceCard: FC<ServiceCardProps> = ({
       onMouseLeave={() => setIsPaused(true)}
       className={
         className ||
-        "group bg-white dark:bg-white/5 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] hover:border-secondary transition-all duration-300 overflow-hidden cursor-pointer"
+        "group bg-white dark:bg-black/40 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 overflow-hidden cursor-pointer"
       }
     >
       <div className="flex justify-between items-center">
         <div
           className={
             iconWrapperClass ||
-            "size-20 rounded-3xl bg-surface dark:bg-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300"
+            "size-20 rounded-3xl bg-surface dark:bg-black/40 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300"
           }
         >
           {/* Lottie Animation Container */}
@@ -134,12 +134,10 @@ export default function Service() {
       description:
         "Emotion-aware AI that analyzes facial cues and voice data to provide real-time feedback.",
       illustration: interview,
-      hoverBorder: "hover:border-services-secondary",
-      hoverText:
-        "group-hover:text-services-secondary dark:group-hover:text-services-secondary",
-      iconBg:
-        "group-hover:bg-services-secondary/10 dark:group-hover:bg-services-secondary/20",
-      iconColor: "text-services-secondary",
+      hoverBorder: "hover:border-theme-2",
+      hoverText: "group-hover:text-theme-2 dark:group-hover:text-theme-2",
+      iconBg: "group-hover:bg-theme-2/10 dark:group-hover:bg-theme-2/20",
+      iconColor: "text-theme-2",
     },
     {
       id: "resume-gen",
@@ -147,12 +145,10 @@ export default function Service() {
       description:
         "AI-powered resume crafting that optimizes for ATS and highlights your impact.",
       illustration: resume,
-      hoverBorder: "hover:border-services-primary",
-      hoverText:
-        "group-hover:text-services-primary dark:group-hover:text-services-primary",
-      iconBg:
-        "group-hover:bg-services-primary/10 dark:group-hover:bg-services-primary/20",
-      iconColor: "text-services-primary",
+      hoverBorder: "hover:border-theme-1",
+      hoverText: "group-hover:text-theme-1 dark:group-hover:text-theme-1",
+      iconBg: "group-hover:bg-theme-1/10 dark:group-hover:bg-theme-1/20",
+      iconColor: "text-theme-1",
     },
     {
       id: "skill-training",
@@ -160,12 +156,10 @@ export default function Service() {
       description:
         "Personalized roadmaps and curated resources to help you bridge the tech gap.",
       illustration: skills,
-      hoverBorder: "hover:border-services-accent",
-      hoverText:
-        "group-hover:text-services-accent dark:group-hover:text-services-accent",
-      iconBg:
-        "group-hover:bg-services-accent/10 dark:group-hover:bg-services-accent/20",
-      iconColor: "text-services-accent",
+      hoverBorder: "hover:border-theme-3",
+      hoverText: "group-hover:text-theme-3 dark:group-hover:text-theme-3",
+      iconBg: "group-hover:bg-theme-3/10 dark:group-hover:bg-theme-3/20",
+      iconColor: "text-theme-3",
     },
   ];
 
@@ -176,14 +170,14 @@ export default function Service() {
       className="section-container bg-surface overflow-hidden"
     >
       <div className="relative z-10 flex flex-col items-center text-center gap-4 mb-16 w-full max-w-6xl mx-auto">
-        <div className="inline-block px-4 py-2 rounded-2xl bg-services-secondary text-white text-xs font-black uppercase tracking-widest transform rotate-2">
+        <div className="inline-block px-4 py-2 rounded-2xl bg-theme-2 text-white text-xs font-black uppercase tracking-widest transform rotate-2">
           Our Expertise
         </div>
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-light">
           Immersive Learning <br />
-          <span className="relative inline-block text-services-primary">
+          <span className="relative inline-block text-theme-1">
             Solutions
-            <SmoothUnderline className="text-services-accent w-full" />
+            <SmoothUnderline className="text-theme-3 w-full" />
           </span>
         </h3>
         <p className="text-muted max-w-2xl text-lg leading-relaxed font-medium mt-4">
@@ -197,8 +191,8 @@ export default function Service() {
           <ServiceCard
             key={i}
             {...s}
-            className={`group bg-white dark:bg-white/5 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] ${s.hoverBorder} transition-all duration-300 overflow-hidden cursor-pointer`}
-            iconWrapperClass={`size-20 rounded-3xl bg-surface dark:bg-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300 ${s.iconBg}`}
+            className={`group bg-white dark:bg-black/40 relative rounded-[2.5rem] p-8 flex flex-col gap-6 border-2 border-primary/5 dark:border-white/5 shadow-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] ${s.hoverBorder} transition-all duration-300 overflow-hidden cursor-pointer`}
+            iconWrapperClass={`size-20 rounded-3xl bg-surface dark:bg-black/20 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300 ${s.iconBg}`}
             arrowClass={`bg-secondary/10 dark:bg-secondary/20 size-12 rounded-full flex items-center justify-center ${s.iconBg} transition-colors duration-300`}
             arrowIconClass={`size-6 text-secondary group-hover:text-white transition-colors ${s.iconColor}`}
             titleClass={`text-2xl font-display font-bold text-light ${s.hoverText} transition-colors`}
@@ -207,9 +201,9 @@ export default function Service() {
       </div>
 
       {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-services-primary/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-10 right-10 size-[200px] md:size-[400px] bg-services-secondary/5 blur-[80px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-10 size-[200px] md:size-[400px] bg-services-accent/5 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[300px] md:size-[600px] bg-theme-1/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-10 right-10 size-[200px] md:size-[400px] bg-theme-2/5 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 left-10 size-[200px] md:size-[400px] bg-theme-3/5 blur-[80px] rounded-full pointer-events-none" />
     </section>
   );
 }

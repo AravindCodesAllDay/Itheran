@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
-import SocialIcon from "./footer/SocialIcon";
 import ClickToCopy from "./common/ClickToCopy";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return true;
     return localStorage.getItem("theme") !== "light";
   });
+
+  // 1. Define the hover styles mapping
+  const themeHoverStyles: Record<string, string> = {
+    "theme-1": "hover:bg-theme-1 hover:shadow-theme-1/40",
+    "theme-2": "hover:bg-theme-2 hover:shadow-theme-2/40",
+    "theme-3": "hover:bg-theme-3 hover:shadow-theme-3/40",
+    "theme-4": "hover:bg-theme-4 hover:shadow-theme-4/40",
+  };
 
   const contactInfo = [
     {
@@ -27,6 +35,7 @@ export default function Footer() {
           />
         </svg>
       ),
+      theme: "theme-1",
     },
     {
       value: `+91 ${import.meta.env.VITE_MOBILE}`,
@@ -46,6 +55,7 @@ export default function Footer() {
           />
         </svg>
       ),
+      theme: "theme-2",
     },
     {
       value: import.meta.env.VITE_ADDRESS,
@@ -70,6 +80,69 @@ export default function Footer() {
           />
         </svg>
       ),
+      theme: "theme-3",
+    },
+  ];
+
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com",
+      theme: "theme-1",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-5"
+        >
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      ),
+    },
+    {
+      name: "Twitter",
+      href: "https://twitter.com",
+      theme: "theme-2",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-5"
+        >
+          <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+        </svg>
+      ),
+    },
+    {
+      name: "Facebook",
+      href: "https://facebook.com",
+      theme: "theme-4",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-5"
+        >
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+      ),
     },
   ];
 
@@ -86,94 +159,72 @@ export default function Footer() {
   const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
-    <footer className="w-full mt-auto py-10 px-6 sm:px-10 lg:px-32 border-t rounded-[3rem] border-black/5 dark:border-white/10 bg-secondary/5 dark:bg-surface text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
+    <footer className="w-full mt-auto py-10 px-6 sm:px-10 lg:px-32 text-muted relative z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto flex flex-col space-y-12">
-        {/* TOP SECTION: Logo, Nav, Socials */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
-          {/* Logo/Brand Name */}
-          <div className="flex items-center text-3xl font-display font-bold tracking-tight text-light">
-            <span className="text-footer-primary mr-2 text-4xl">★</span>
+          <Link
+            to="/"
+            className="flex items-center text-3xl font-display font-bold tracking-tight text-light hover:opacity-80 transition duration-150"
+          >
+            <span className="text-theme-1 mr-2 text-4xl">★</span>
             <span className="text-light">{import.meta.env.VITE_APP_NAME}</span>
-          </div>
+          </Link>
 
-          {/* Social Icons & Theme Toggle */}
           <div className="flex items-center space-x-8">
             <div className="flex space-x-4">
-              <SocialIcon href="https://linkedin.com" variant="linkedin">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-5"
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className={`size-10 rounded-full bg-surface-highlight dark:bg-black/40 border border-black/5 dark:border-white/10 flex items-center justify-center transition duration-300 hover:scale-110 hover:text-white text-muted shadow-sm ${
+                    themeHoverStyles[social.theme] || ""
+                  }`}
                 >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </SocialIcon>
-              <SocialIcon href="https://twitter.com" variant="twitter">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-5"
-                >
-                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                </svg>
-              </SocialIcon>
-              <SocialIcon href="https://facebook.com" variant="facebook">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-5"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </SocialIcon>
+                  {social.icon}
+                </a>
+              ))}
             </div>
 
             <button
               onClick={toggleTheme}
-              className="p-3 rounded-full bg-surface dark:bg-white/10 border border-black/5 dark:border-white/10 hover:border-footer-primary transition-all duration-300 shadow-sm hover:rotate-12"
-              aria-label="Toggle Theme"
+              className={`p-2.5 rounded-full bg-surface-highlight dark:bg-black/40 border border-black/5 dark:border-white/10 transition-all duration-300 shadow-sm hover:rotate-12 ${
+                isDark
+                  ? "text-theme-3 hover:border-theme-3"
+                  : "text-theme-2 hover:border-theme-2"
+              }`}
             >
+              {/* Sun/Moon SVG Icons */}
               {isDark ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-yellow-400 fill-current"
+                  fill="none"
                   viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                   />
                 </svg>
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-indigo-600 fill-current"
+                  fill="none"
                   viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
                   />
                 </svg>
               )}
@@ -187,8 +238,12 @@ export default function Footer() {
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
-                <div className="size-10 rounded-full bg-surface dark:bg-white/5 border border-black/5 dark:border-transparent flex items-center justify-center text-footer-primary shadow-sm">
-                  {item.icon}
+                <div
+                  className={`size-10 rounded-full bg-surface-highlight dark:bg-black/20 border border-black/5 dark:border-white/5 flex items-center justify-center shadow-sm text-${item.theme} hover:bg-${item.theme}/10 transition-colors cursor-pointer group`}
+                >
+                  <div className="group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
                 </div>
                 <ClickToCopy value={item.value} />
               </div>
@@ -200,13 +255,13 @@ export default function Footer() {
             <h4 className="text-light font-display font-bold text-lg mb-4">
               Stay Updated
             </h4>
-            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-white dark:bg-black/20 rounded-3xl border border-black/5 dark:border-white/5 shadow-sm">
+            <div className="flex flex-col sm:flex-row gap-3 p-2 bg-white dark:bg-white/5 rounded-3xl border border-black/5 dark:border-white/5 shadow-premium">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-2xl bg-white/5 border border-transparent focus:outline-none text-light placeholder-muted font-medium focus:ring-2 focus:ring-footer-primary/20"
+                className="flex-1 px-6 py-3 rounded-2xl bg-surface-highlight/50 dark:bg-black/40 border border-transparent focus:outline-none text-light placeholder-muted font-medium focus:ring-2 focus:ring-theme-1/20"
               />
-              <button className="px-8 py-3 rounded-2xl bg-footer-primary text-white font-bold hover:bg-footer-secondary transition-colors duration-300 shadow-lg shadow-footer-primary/20">
+              <button className="px-8 py-3 rounded-2xl bg-theme-1 text-white font-bold hover:bg-theme-2 transition-colors duration-300 shadow-lg shadow-theme-1/20">
                 Subscribe
               </button>
             </div>
@@ -219,10 +274,10 @@ export default function Footer() {
             Solutions Private Limited
           </p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-secondary transition-colors">
+            <a href="#" className="hover:text-theme-1 transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-secondary transition-colors">
+            <a href="#" className="hover:text-theme-2 transition-colors">
               Terms of Service
             </a>
           </div>

@@ -3,12 +3,14 @@ import SidebarNavItem from "./SidebarNavItem";
 interface SidebarNavListProps {
   items: any[];
   activeId: string;
+  themeColor?: string;
   onSelect: (id: string) => void;
 }
 
 export default function SidebarNavList({
   items,
   activeId,
+  themeColor,
   onSelect,
 }: SidebarNavListProps) {
   return (
@@ -20,6 +22,7 @@ export default function SidebarNavList({
           label={item.label}
           icon={item.icon}
           isActive={activeId === item.id}
+          themeColor={themeColor}
           onSelect={onSelect}
         />
       ))}
