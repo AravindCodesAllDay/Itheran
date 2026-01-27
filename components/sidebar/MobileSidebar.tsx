@@ -60,12 +60,7 @@ export default function MobileSidebar({
           </button>
         </div>
 
-        <SidebarNavList
-          items={items}
-          activeId={activeId}
-          themeColor={themeColor}
-          onSelect={onSelect}
-        />
+        <SidebarNavList items={items} activeId={activeId} onSelect={onSelect} />
 
         <div className="mt-8 p-4 rounded-2xl bg-surface-highlight border border-border">
           <h4
